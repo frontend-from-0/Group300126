@@ -1,0 +1,113 @@
+/* Colors:
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --bg-gray: #f8fafc;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --white: #ffffff; 
+*/
+
+body {
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+nav {
+    max-width: 1200px;
+    margin: auto;
+}
+/* ID selector starts with # followed by the id name used in HTML */
+#nav-top {
+    max-width: 1000px;
+}
+
+
+.nav-list {
+    list-style-type: none;
+    padding-inline-start: 0;
+
+    /* Flexbox styles can only be used if display: flex; is set first on the element */
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+/* Class selector (starts with a . followed by the class name used in HTML) */
+.nav-link {
+    color: inherit;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #2563eb;
+}
+
+.nav-link.active {
+   text-decoration: underline;
+   color: #3b82f6;
+}
+
+h1 {
+  
+  text-transform: uppercase;
+
+}
+
+p {
+    color: #64748b;
+}
+
+.button {
+    background-color: #3b82f6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #f8fafc;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px;
+
+    display: inline-block;
+}
+
+.button:hover {
+    background-color: #2563eb;
+}
+
+.hero {
+    text-align: center;
+    background-color: #ffffff;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.info {
+    display: flex;
+    gap: 50px;
+    max-width: 1000px;
+    margin: auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+footer {
+    max-width: 800px;
+    margin: auto;
+}
+
+
+.accent {
+    color: #2563eb;
+}
+
+
