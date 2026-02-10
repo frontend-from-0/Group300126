@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #d1d5db;
+  color: #111827;
+  text-align: center;
+}
+
+
+form {
+  background-color: #f9fafb;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-subgroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+
+fieldset {
+  text-align: left;
+  border:none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.input-inline {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
