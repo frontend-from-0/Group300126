@@ -1,0 +1,73 @@
+/* Colors:
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --bg-gray: #f8fafc;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --white: #ffffff; 
+*/
+
+div {
+  width: 100px;
+  height: 100px;
+  background-color: #3b82f6;
+  /* border is a shorthand css property */
+  border: 1px solid #2563eb;
+  margin: 10px;
+}
+
+span {
+  background-color: #64748b;
+  /* hegiht, width and vertical margin props don't work for inline elements */
+  /* height: 100px;
+  width: 500px;
+  margin: 20px 40px; */
+}
+
+img {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px;
+}
+
+a {
+  background-color: #3b82f6;
+  padding: 10px 20px;
+  margin: 50px auto;
+  /* It's usually good to add inline-block display for link elements that shoudl look like button
+    display: inline-block; */
+    }
+
+select {
+  width: 200px;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+legend {
+  background-color: #3b82f6;
+  width: 500px;
+}
+
+section {
+  height: 200px;
+  background-color: #3b82f6;
+}
+
+main {
+   height: 300px;
+  background-color: #64748b;
+}
+
+
+input {
+    width: 100%;
+    max-width: 700px;
+}
+
+button {
+    width: 400px;
+}
