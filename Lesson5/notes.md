@@ -3,7 +3,8 @@
 
 * HEX & HEXA (#RRGGBB & #RRGGBBAA) - #000 #000000 both are black color (mostly used in frontend development)
 
-* RGB - rgb(0,230,0)
+
+* RGB - rgb(0, 230, 0)
 * RGBA - rgba(0,0,0,0.4) the last number is for opacity (transparency)
 
 * HSL & HSLA (HUE - SATURATION - LIGHTNESS)
@@ -85,6 +86,7 @@ These units scale based on other values, such as font size or viewport dimension
 * `em` – Relative to the font-size of the parent
 * `rem` – Relative to the font-size of the root element (`html`)
 * `%` – Relative to the size of the parent element
+
 We don't really use units below:
 * `ex` – Relative to the x-height of the font (typically the height of "x")
 * `ch` – Relative to the width of the "0" character in the current font
@@ -106,3 +108,4 @@ Relative units are best for responsive design and accessibility.
 * Font weights
 
 * Truncate long text with elipsis: https://css-tricks.com/snippets/css/truncate-string-with-ellipsis/
+
