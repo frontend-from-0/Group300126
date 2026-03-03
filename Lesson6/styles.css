@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: 'Lato', sans-serif;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+p {
+  margin: 0;
+}
+
+header {
+  font-family: 'Roboto', sans-serif;
+  background: #fbfbfd;
+}
+
+.nav-top {
+  max-width: 1110px;
+  margin: 0 auto;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 50px;
+}
+
+.nav-logo {
+  color: #2245e3;
+  font-feature-settings:
+    'liga' off,
+    'clig' off;
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 38px;
+}
+.nav-logo:hover {
+  color: #0b1e74;
+}
+
+main {
+  max-width: 1312px;
+  margin: auto;
+}
+.hero-section {
+  display: flex;
+  gap: 80px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+h1 {
+  font-size: 80px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+.btn-secondary {
+  padding: 24px 56px;
+  border-radius: 40px;
+  background: #333;
+  color: #fff;
+  font-size: 22px;
+  line-height: 18px;
+}
+
+.hero-text {
+  /* I've split hero-section into 20 equal parts and set hero-text to take 9 parts, and hero-info 11. */
+  flex: 9;
+}
+
+.hero-info {
+  flex-wrap: wrap;
+  display: flex;
+  /* I've commented out the gap line below and added justify-content (sets spacing between items horisontally), row-gap (sets space between rows), and flex: 11 (total 20 parts, hero-info uses 11 parts and hero-text uses 9 parts. This is the closest proportiong that I found. I'd actually prefer to use 3 different rows here instead of using flex-wrap, as flex-wrap made things a bit harder to implement */
+  /* gap: 40px 78px; */
+  justify-content: space-between;
+  row-gap: 78px;
+  flex: 11;
+}
+
+.info-card {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  max-width: 318px;
+}
+h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+.text-small {
+  margin: 0;
+  font-size: 16px;
+}
+.info-icon {
+  width: 76px;
+  height: 76px;
+}
+
+.bottom-cards {
+  display: flex;
+}
+
+/* TODO: replace selector with class selector */
+.bottom-cards > div {
+  height: 283px;
+  width: 328px;
+  background-image: url('./assets/bottom-image-1.svg'); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  padding: 24px 53px;
+  color: #ffffff;
+}
+
+.card-1 {
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+
+}
