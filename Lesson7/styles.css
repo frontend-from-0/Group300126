@@ -1,0 +1,174 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* --variable-name: value; */
+  /* Better names could be: --main-500 or --primary-500 */
+
+  --main-blue-500: #505f98;
+  --main-blue-800: #111b47;
+  --main-blue-900: #091133;
+  --secondary-white-100: #fff;
+  --logo: #37447e;
+
+  /* Usually used as variables:
+  - colors
+  - font-sizes
+  - border-radius
+  */
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-image: url('./assets/hero.svg');
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-size: auto 100vh;
+  font-feature-settings:
+    'liga' off,
+    'clig' off;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+.nav-top {
+  max-width: 1110px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+.nav-list {
+  display: flex;
+  gap: 60px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: var(--main-blue-500);
+}
+.logo {
+  color: var(--logo);
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 38px;
+}
+
+.btn {
+  border-radius: 2px;
+  padding: 5px 36px;
+  min-width: 160px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: var(--main-blue-800);
+  color: var(--secondary-white-100);
+  border: 2px solid var(--main-blue-800);
+}
+
+.btn-primary:hover {
+  background-color: var(--main-blue-500);
+  border: 2px solid var(--main-blue-500);
+}
+
+.btn-outline {
+  color: var(--main-blue-900);
+  border: 2px solid var(--main-blue-900);
+}
+.btn-outline:hover {
+  color: var(--secondary-white-100);
+  background-color: var(--main-blue-900);
+}
+.text-xs {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.text-sm {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+/* 16px */
+.text-md {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+/* 18px */
+.text-lg {
+    font-size: 18px;
+    line-height: 30px;
+}
+
+main {
+  max-width: 1110px;
+  margin: 0 auto;
+}
+.flex-row {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+
+
+h1 {
+  color: var(--main-blue-900);
+
+  /* Medium 50 */
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 66px;
+  letter-spacing: 1px;
+}
+
+p {
+  margin: 0;
+}
+
+.text-main-500 {
+    color: var(--main-blue-500);
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-70{
+    margin-top: 70px;
+
+}
+
+.gap-30 {
+    gap: 30px;
+}
+
+.section-lg {
+  min-height: calc(100vh - 60px);
+}
+
+.section-md {
+  min-height: 80vh;
+}
+
+.section-sm {
+  min-height: 70vh;
+}
+
+.align-center {
+  align-items: center;
+}
