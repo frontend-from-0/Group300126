@@ -1,15 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSS Grid</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Grid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-top-container">
+        <div class="w-full header-top">
+          <div class="">
+            <span>Mon-Thu: 9:00 AM - 5:30 PM</span>
+          </div>
+          <div>
+            <span
+              >Visit our showroom in 1234 Street Adress City Address, 1234
+              <a href="#">Contact Us</a></span
+            >
+          </div>
+          <div>
+            <span>Call Us: <a href="tel:0012345678">(00) 1234 5678</a></span>
+          </div>
+        </div>
+      </div>
+      <nav class="w-full nav">
+        <ul class="nav-list">
+          <li>
+            <a class="logo" href=""><img src="./assets/logo.svg" /></a>
+          </li>
+          <li><a href="">Laptops</a></li>
+          <li><a href="">Desktop PCs</a></li>
+          <li><a href="">Networking Devices</a></li>
+          <li><a href="">Printers & Scanners</a></li>
+          <li><a href="">PC Parts </a></li>
+          <li><a href="">All Other Products</a></li>
+          <li><a href="">Repairs</a></li>
+          <li><a href="">Our Deals</a></li>
+        </ul>
+        <ul class="nav-list">
+          <li><a href="">🔎</a></li>
+          <li>
+            <a href="">🛒</a>
+            <span>2</span>
+          </li>
+          <li>
+            <a href=""><img src="./assets/profile.svg" /></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="w-full">
+      <div class="breadcrumbs">
+        <a href="#">Home</a>
+        <a href="#">Login</a>
+      </div>
+      <h1>Shopping Cart</h1>
+      <div class="container">
+        <section>
+          <div class="shopping-card-table">
+            <span>Item</span>
+            <span class="col-3">Price</span>
+            <span class="col-4">Qty</span>
+            <span class="col-5">Subtotal</span>
+            <div class="grid-separator"></div>
+            <img class="col-1" src="./assets/product1.svg" alt="product1" />
+            <p class="col-2">
+              MSI MEG Trident X 10SD-1012AU Intel i7 10700K, 2070 SUPER, 32GB
+              RAM, 1TB SSD, Windows 10 Home, Gaming Keyboard and Mouse 3 Years
+              Warranty
+            </p>
+            <span class="col-3">$4,349.00</span>
+            <div>
+              <input
+                type="number"
+                class="col-4 input-quantity"
+                value="1"
+                aria-label="product1 quantity"
+              />
+            </div>
+
+            <span class="col-5">$13,047.00</span>
+            <div>
+              <button class="btn-action">
+                <img src="./assets/icons/x.svg" />
+              </button>
+              <button class="btn-action">
+                <img src="./assets/icons/pencil.svg" />
+              </button>
+            </div>
+            <div class="grid-separator"></div>
+            <img class="col-1" src="./assets/product2.svg" alt="" />
+            <span class="col-3">$4,349.00</span>
+
+            <div>
+              <input
+                type="number"
+                class="col-4 input-quantity"
+                value="1"
+                aria-label="product2 quantity"
+              />
+            </div>
+            <span class="col-5">$13,047.00</span>
+            <div>
+              <button class="btn-action">
+                <img src="./assets/icons/x.svg" />
+              </button>
+              <button class="btn-action">
+                <img src="./assets/icons/pencil.svg" />
+              </button>
+            </div>
+            <div class="grid-separator"></div>
+          </div>
+          <div>
+            <!-- Add buttons here -->
+          </div>
+        </section>
+        <section>
+          <h2>Summary</h2>
+          <div class="accordion">
+            <div class="accordion-title">
+              <h3>Estimate Shipping and Tax</h3>
+              <span>˄</span>
+            </div>
+            <div class="accordion-body">
+              <p>Enter your destination to get a shipping estimate.</p>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <div class="accordion-title">
+              <h3>Apply Discount Code</h3>
+              <span>˯</span>
+            </div>
+          </div>
+          
+          <div class="separator"></div>
+        </section>
+      </div>
+    </main>
+  </body>
 </html>
