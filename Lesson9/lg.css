@@ -1,0 +1,38 @@
+
+
+nav {
+  flex-direction: row;
+}
+
+.nav_hamburger {
+  display: none;
+}
+
+.nav_links {
+  display: flex;
+  gap: 64px;
+}
+
+
+.nav_ctas {
+   display: flex;
+}
+
+.btn{
+  padding: 16px 32px;
+}
+
+.max-content {
+  max-width: 1184px;
+  margin: auto;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.hero-section{
+  flex-direction: row;
+  align-items: center;
+}

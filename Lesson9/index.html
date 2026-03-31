@@ -1,13 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive design</title>
     <link rel="stylesheet" href="./styles.css" />
-    
+    <link
+      rel="stylesheet"
+      href="./md.css"
+      media="all and (min-width: 768px) and (max-width: 1023.98px)"
+    />
+    <link
+      rel="stylesheet"
+      href="./lg.css"
+      media="all and (min-width: 1024px)"
+    />
   </head>
   <body>
+    <!-- 
+
+    mobile:
+    logo
+    hamburger
+    login signup - hidden
+    desktop menu - hidden
+
+    tablet:
+    logo 2
+    hamburger 1
+    login signup 3
+    desktop menu - hidden
+
+    desktop:
+    logo 1
+    hamburger - hidden
+    login signup 3
+    desktop menu  2
+
+
+
+    mobile: flex-direction: row-reverse
+    hamburger 
+    logo
+    desktop menu - hidden 
+    login signup - hidden
+
+    tablet: flex-direction: row
+    hamburger 
+    logo
+    desktop menu - hidden 
+    login signup
+
+    desktop: flex-direction: row
+    hamburger - hidden
+    logo
+    desktop menu
+    login signup
     
+
+
+    hero section 
+     -- text content (div)
+     -- image (div)
+
+
+    mobile & tablet
+    flex-direction: column-reverse
+    text
+    image 
+
+
+    desktop
+    flex-direction: row
+    text 
+    image
+    -->
+
+    <nav class="max-content">
+      <button class="nav_hamburger" aria-label="hamburger icon">
+        <img src="./assets/icons/hamburger.svg" alt="" aria-hidden="true" />
+      </button>
+      <a class="nav_logo" href="#"
+        ><img src="./assets/logo.svg" alt="Travlog logo"
+      /></a>
+      <ul class="nav_links">
+        <li><a href="">Home</a></li>
+        <li><a href="">Discover</a></li>
+        <li><a href="">Special Deals</a></li>
+        <li><a href="">Contact</a></li>
+      </ul>
+      <!-- CTA - call to action -->
+      <ul class="nav_ctas">
+        <li><a href="" class="btn btn-link">Log In</a></li>
+        <li><a href="" class="btn btn-primary">Sign Up</a></li>
+      </ul>
+    </nav>
+    <main class="max-content">
+      <section class="hero-section">
+        <div>
+          <div class="badge">
+            <span>Explore the world!</span>
+            <img
+              src="./assets/icons/briefcase.svg"
+              alt=""
+              aria-hidden="true"
+              class="icon"
+            />
+          </div>
+          <h1>
+            Travel <span class="text-accent">top destination</span> of the world
+          </h1>
+          <p>
+            We always make our customer happy by providing as many choices as
+            possible
+          </p>
+          <div>
+            <a href="" class="btn btn-primary">Get Started</a>
+            <a href="" class="btn btn-link">
+              <img
+                src="./assets/icons/play.svg"
+                alt=""
+                aria-hidden="true"
+                class="icon"
+              />Watch Demo
+            </a>
+          </div>
+        </div>
+        <div>
+          <picture>
+            <source
+              srcset="./assets/hero-md.webp"
+              media="all and (max-width: 768px)"
+              type="image/webp"
+            />
+            <source
+              srcset="./assets/hero-sm.webp"
+              media="all and (max-width: 767.98px)"
+              type="image/webp"
+            />
+            <!-- TODO: Fill alt text attributes -->
+            <img
+              src="./assets/hero-md.png"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              width="789px"
+              height="821px"
+            />
+          </picture>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

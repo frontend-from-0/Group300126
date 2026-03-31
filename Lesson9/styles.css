@@ -6,6 +6,8 @@
 body {
   margin: 0;
   padding: 0 16px;
+  /* TODO: find closest font family to "Circular Std" */
+  font-family: sans-serif;
 }
 
 ol,
@@ -28,3 +30,79 @@ img {
   width: 100%;
   height: auto;
 }
+
+/* Tablets
+@media all and (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+
+Laptops and larger screens 
+@media all and (min-width: 1024px) {
+
+}
+*/
+
+nav {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px
+}
+
+.nav_links {
+  display: none;
+}
+
+.nav_ctas {
+  display: none;
+}
+
+.nav_hamburger {
+  background: none;
+  border: none;
+}
+
+.nav_hamburger:hover {
+  cursor: pointer;
+}
+.btn {
+  padding: 24px 32px;
+  border-radius: 100px;
+  /* Some buttons contain text and icon (image) */
+  display: flex;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.btn-link {
+  background-color: #fff;
+}
+
+.btn-primary {
+  background-color: #5d50c6;
+  color: #fff;
+}
+
+/* TODO: add hover effects for btn-link and btn-primary */
+
+.badge {
+  display: flex;
+  gap: 16px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column-reverse;
+  min-height: calc(100vh - 110px);
+  align-items: center;
+
+}
+
+

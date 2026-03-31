@@ -1,0 +1,20 @@
+body {
+  padding: 0 64px;
+}
+
+nav {
+  flex-direction: row;
+}
+
+
+.nav_ctas {
+   display: flex;
+}
+.btn{
+  padding: 16px 32px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}

@@ -10,7 +10,7 @@
 
 3. Fluid sizing:
   - Use clamp() for typography and spacing [https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/clamp]
-  - Prefer %, rem, vw, fr over fixed pixels for layout []
+  - Prefer %, rem, vw, fr over fixed pixels for layout
 
 4. Modern units:
   - Know dvh/svh/lvh for mobile viewport issues (address bar resizing). [https://medium.com/@tharunbalaji110/understanding-mobile-viewport-units-a-complete-guide-to-svh-lvh-and-dvh-0c905d96e21a]
