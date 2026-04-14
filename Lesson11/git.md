@@ -11,12 +11,15 @@ GitHub is a web-based platform that uses Git for version control. It provides ho
 GitHub, sürüm kontrolü için Git'i kullanan web tabanlı bir platformdur. Yazılım geliştirme projelerine barındırma sağlar ve hata takibi, görev yönetimi, proje dokümantasyonu gibi özellikler sunar. GitHub, birden fazla geliştiricinin aynı kod tabanında çalışmasına olanak tanıyarak işbirliği yapmalarını ve çalışmalarını koordine etmelerini kolaylaştırır.
 
 ## Common git commands:
+- *git init* - intialise repository (start new git project in a folder) - only needed if you start the project from scratch on your computer (you'd need to pair it with a repository on Github.com)
 - *git clone* - clones a repository from GitHub to your local machine
 - *git add* - adds changes to your local Git repository
 - *git commit* - commits changes to your local Git repository
 - *git push* - pushes changes from your local Git repository to the GitHub repository
 - *git pull* - pulls changes from the GitHub repository to your local Git repository
 
+
+- *git init* - Depoyu başlatma (bir klasörde yeni bir git projesi başlatma) - bu yalnızca projeyi bilgisayarınızda sıfırdan başlatıyorsanız gereklidir (bunu Github.com'da bir depo ile eşleştirmeniz gerekir).
 - *git clone* - GitHub'dan yerel makinenize bir depo kopyalar
 - *git add* - yerel Git deponuza değişiklikler ekler
 - *git commit* - değişiklikleri yerel Git deponuza aktarır
