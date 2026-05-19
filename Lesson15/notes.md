@@ -1,8 +1,3 @@
-In JavaScript, a *string* is a sequence of characters used to represent text. Strings are one of the primitive data types in JavaScript and are immutable, meaning once a string is created, it cannot be changed. However, you can create new strings based on operations performed on existing ones. JavaScript provides a variety of methods to manipulate strings, making it easier to work with text.
-
-See more information about different methods available in JS for String object: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
-
-
 ## Functions
 
 Functions are one of the fundamental building blocks of the language. They are reusable blocks of code that can be executed when needed. Functions encapsulate a set of statements and can be called or invoked to perform a specific task or calculation. 
@@ -12,11 +7,12 @@ function (parameter1, parameter2) {
   return parameter1 * parameter2;
 };
 
-### Named function:
+### Named function (multiplyTwoNumbers is a pure function):
 function multiplyTwoNumbers (parameter1, parameter2) {
   return parameter1 * parameter2;
 }
-multiplyTwoNumbers(10, 40); // 400
+const result = multiplyTwoNumbers(10, 40); // 400
+console.log(result) // 400
 multiplyTwoNumbers(1, 40); // 40
 
 ### Function Expression
@@ -29,20 +25,22 @@ sumOfTwoNumbers(10, 15);
 ### Arrow Function (introduced in ECMAScript 6 OR ES6)
 Anonymus arrow function
 
+() => console.log('Hello world'); // single line anonymus arrow function
+
 () => {
   console.log('Hello world');
-};
+}; // multi-line anonymus arrow function
 
 ### Single line arrow function experession
 const greet = (name) =>  'Hello '+ name;
 greet('John');
 
 ### Multi line arrow function experession
-const greet = () => {
-  return 'Hello world';
+const greet = (name) => {
+  return 'Hello ' + name;
 };
 
-greet();
+greet('John');
 
 ### IIFE (Immediately Invoked Function Expression)
 (function multiplyTwoNumbers(parameter1, parameter2) {
@@ -61,6 +59,7 @@ if (condition) {
 
 }
 #### Same line if condition:
+const today = 'Wednesday';
 if (today === 'Wednesday') console.log('Join the lesson');
 
 #### if ... else Statement
@@ -72,6 +71,17 @@ if (condition) {
  ... some code
 } else {
  ... some code
+}
+
+const grade = 71;
+if (grade > 70) {
+ console.log('Good')
+} else if (grade > 60) {
+ console.log('Acceptable')
+} else if (grade > 50) {
+ console.log('Pass');
+} else {
+ console.log('Below acceptable rate'); // 0 -50 including
 }
 
 ### Switch statement

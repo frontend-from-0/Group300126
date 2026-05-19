@@ -6,7 +6,21 @@
    - Otherwise, log: "Password is too short."
    - Call the function with different passwords and log the result.
 */
-
+function checkPassword(password) {
+  const passwordString = String(password);
+  // if (typeof password !== 'string') {
+  //    console.log('Please provide a string value');
+  //    return;
+  // }
+  if (passwordString.length >= 8) {
+    console.log('Password length is sufficient.');
+  } else {
+    console.log('Password is too short.');
+  }
+}
+checkPassword('123456789');
+checkPassword('asdf');
+checkPassword(123456789);
 
 /*
 2. Uppercase Name
@@ -14,14 +28,41 @@
    - Log the uppercase result to the console.
    - Example: "John Doe" -> "JOHN DOE"
 */
-
+function uppercaseName(name) {
+  if (typeof name !== 'string') {
+    console.log('Please provide a string value');
+    return;
+  }
+  console.log(name.toUpperCase());
+}
+uppercaseName('Oguzhan Demir');
+uppercaseName({ name: 'Oguzhan Demir' });
 
 /*
 3. Lowercase Email
    - Define a function `normalizeEmail(email)` that returns a lowercased version of the email.
    - Log the normalized email to the console.
    - Example: "USER@Example.COM" -> "user@example.com"
+
 */
+
+function normalizeEmail(email) {
+   if (typeof email !== 'string') {
+    console.log('Please provide a string value');
+    return;
+  }
+   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+   if (emailRegex.test(email)) {
+      console.log(email.toLowerCase())
+   } else {
+      console.log('Email address is not valid, please provide a valid email address, e.g. name@domain.com');
+   }
+  
+}
+console.log('Ex. 3:')
+normalizeEmail('USER@Example.COM');
+normalizeEmail('USERExample.COM');
+
 
 /*
 4. Extract Domain
@@ -31,6 +72,28 @@
    - Example: "user@example.com" -> "example.com"
 */
 
+function getDomain(email) {
+   if (typeof email !== 'string') {
+      console.log('Please provide a string value');
+      return;
+   }
+   // Find index for split
+   // split the string
+   const index = email.indexOf('@');
+   const domain = email.substring(index + 1);
+   console.log(domain);
+
+   // Alternative
+   // const emailParts = email.split('@');
+   // console.log(emailParts[1]);
+}
+
+console.log('Ex. 4:');
+getDomain('busra@example.com');
+getDomain('busra@google.com');
+getDomain();
+
+
 
 /*
 5. Check Substring
@@ -39,14 +102,47 @@
    - If true, log: "<word> found in sentence."
    - Else, log: "<word> not found in sentence."
 */
+function containsWord(sentence,word){
+    if (typeof sentence !== 'string' || typeof word !== 'string') {
+      console.log('Please provide a string value for both parameters.');
+      return;
+   }
+   if(sentence.includes(word)){
+      console.log(`${word} found in sentence`);
+   } else {
+      console.log(`${word} not found in sentence`);
+   }
+}
+
+containsWord('ends with ".pdf" using .endsWith().', 'with');
+containsWord('ends with ".pdf" using .endsWith().', 'JS');
+containsWord('ends with ".pdf" using .endsWith().');
+
+
 
 /*
 6. File Extension Check
    - Define a function `checkFileExtension(filename)` that checks if the filename
      ends with ".pdf" using .endsWith().
    - If it does, log: "This is a PDF file."
-   - Otherwise, log: "Not a PDF file."
+   - Otherwise, log: "ç"
 */
+
+function checkFileExtension(filename){
+   if (typeof filename !== 'string') {
+      console.log(`Please provide a string value`);
+      return;
+   }
+
+   if (filename.toLowerCase().endsWith(`.pdf`)){
+      console.log(`This is a PDF file.`)
+   } else {
+      console.log(`This is not a PDF file.`)
+   }
+}
+
+checkFileExtension(`test.PDF`);
+checkFileExtension(`test.jpeg`);
 
 /*
 7. Compare Numbers (if-else)
@@ -95,10 +191,34 @@
      7 -> "Sunday"
      - Log the matched day or "Invalid day" if out of range.
 */
+function getDayOfWeek(num){
+   const weekDayNumber = parseInt(num);
+   switch(weekDayNumber){
+      case 1:
+         return "Monday";
+      case 2:
+         return "Tuesday";
+      case 3:
+          return "Wednesday";
+      case 4:
+         return "Thursday";
+      case 5:
+         return "Friday";
+      case 6:
+         return "Saturday";
+      case 7:
+         return "Sunday";
+      default:
+         return "Invalid Day";
+   }
+}
+console.log("Ex.12:");
+console.log(getDayOfWeek(2));
+console.log(getDayOfWeek(5));
+console.log(getDayOfWeek(new Date().getDay()));
 
+console.log(new Date(), new Date().getDay(), new Date().getDate(), new Date().getMonth(), new Date().getFullYear());
 
-// value == value
-/// value and type === value and type
 
 /*
 13. Repeat a String
