@@ -37,6 +37,13 @@ for (const key in person) {
     console.log(`${key}: ${person[key]}`);
 }
 
+const personObjectKeys = Object.keys(person); // ['firstname', 'lastname', 'age']
+for (let index = 0; index < personObjectKeys.length; index++) {
+    const currentObjectKey = personObjectKeys[index];
+    
+    console.log(`${currentObjectKey}: ${person[currentObjectKey]}`);
+} 
+
 /*
 For...Of Loop
 The for...of loop is used to iterate over iterable objects such as Arrays, Strings, Maps, NodeLists, and more. It retrieves values directly from the collection, rather than the array indices.
@@ -44,5 +51,9 @@ The for...of loop is used to iterate over iterable objects such as Arrays, Strin
 
 const colors = ['red', 'green', 'blue'];
 for (const color of colors) {
+    console.log(color);
+}
+
+for (let index = 0; index < colors.length; index++) {
     console.log(color);
 }

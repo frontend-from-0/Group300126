@@ -4,6 +4,31 @@
      to sum all elements in an array of numbers.
    - Log the final sum.
 */
+function sumArray(numbers) {
+  if (!Array.isArray(numbers)) {
+    console.warn('Provided input is not an array');
+    return;
+  }
+  let totalSum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    if (typeof numbers[i] !== 'number') {
+      console.warn(
+        'Provided input contains a non-numeric value. Check the input and try again.',
+      );
+      return;
+    }
+
+    totalSum = totalSum + numbers[i];
+  }
+  console.log('Ex.1: ' + totalSum);
+}
+sumArray([1, 2, 5, 6]);
+sumArray(['00', 2, '15', 6]);
+
+sumArray({ 1: 'aseasd', 2: 'aaa', 5: 'aaaa', 6: false });
+
+console.log({ 1: 'aseasd', 2: 'aaa', 5: 'aaaa', 6: false });
+console.table({ 1: 'aseasd', 2: 'aaa', 5: 'aaaa', 6: false });
 
 /*
 2. Find Maximum Number in an Array
@@ -12,13 +37,64 @@
    - Log the largest value.
 */
 
+function findMax(numbers) {
+  if (!Array.isArray(numbers)) {
+    console.warn('Provided input is not an array');
+    return;
+  }
+  if (typeof numbers[0] !== 'number') {
+    console.warn(
+      'Provided input contains a non-numeric value. Check the input and try again.',
+    );
+    return;
+  }
+
+  let maxNumber = numbers[0];
+  for (let i = 1; i < numbers.length; i++) {
+    if (typeof numbers[i] !== 'number') {
+      console.warn(
+        'Provided input contains a non-numeric value. Check the input and try again.',
+      );
+      return;
+    }
+    if (maxNumber < numbers[i]) {
+      maxNumber = numbers[i];
+    }
+  }
+  console.log('Ex.2: ' + maxNumber);
+}
+
+findMax([1, 2, 50, 6]);
+findMax([-1, -2, -50, -6]);
+findMax(['1', '2', '11']);
+
 /*
 3. Count Odd and Even Numbers
    - Define a function `countOddEven(numbers)` that loops through an array
      of numbers and counts how many are odd and how many are even.
    - Log the counts in the format: "Odd: X, Even: Y"
 */
+function countOddEven(numbers) {
+  let oddNumbersArray = [];
+  let evenNumbersArray = [];
 
+  for (const item of numbers) {
+    if (typeof item !== 'number') {
+      console.warn(
+        'Provided input contains a non-numeric value. Check the input and try again.',
+      );
+      return;
+    }
+    if (item % 2 === 0) {
+      evenNumbersArray.push(item);
+    } else {
+      oddNumbersArray.push(item);
+    }
+  }
+
+  console.log('Ex.3:', `Odd: ${oddNumbersArray}, Even: ${evenNumbersArray}`);
+}
+countOddEven([1, 2, 53, 6]);
 /*
 4. Sum of Numbers in a Range (While Loop)
    - Define a function `sumRange(start, end)` that uses a while loop
@@ -32,6 +108,19 @@
      of an array manually using a for loop (without using .reverse()).
    - Log the reversed array.
 */
+function reverseArray(arr) {
+  if (!Array.isArray(arr)) {
+    console.warn('Provided input is not an array');
+    return;
+  }
+  let reversedArray = [];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    reversedArray.push(arr[i]);
+  }
+  console.log('Ex.5:', reversedArray);
+}
+reverseArray([1, 2, 53, 6]);
+reverseArray(undefined);
 
 /*
 6. Filter Out Negative Numbers
@@ -46,6 +135,28 @@
      to multiply each number by 2, storing results in a new array.
    - Log the new array.
 */
+
+function doubleValues(numbers) {
+  if (!Array.isArray(numbers)) {
+    console.warn('Provided input is not an array');
+    return;
+  }
+
+  const result = [];
+  for (const item of numbers) {
+    if (typeof item !== 'number') {
+      console.warn(
+        'Provided input contains a non-numeric value. Check the input and try again.',
+      );
+      return;
+    }
+    result.push(item * 2);
+  }
+  console.log(result);
+}
+doubleValues([5, 4, 8, 30]);
+doubleValues(5, 4, 8, 30);
+
 
 /*
 8. Print Each Character of a String (For-of)
@@ -66,7 +177,26 @@
     - Define a function `printObjectKeys(obj)` that uses a for-in loop
       to log each key of the object.
     - Example: { name: "Alice", age: 25 } -> logs "name", then "age"
+
+    {
+    name: 'john',
+    username: 'john',
+    }
 */
+function printObjectKeys(obj){
+  if(typeof obj !== 'object' || !obj){
+    console.log("Not an object");
+    return;
+  }
+  for(const x in obj){
+    console.log(x)
+  }
+}
+printObjectKeys({name: "Alice", age: 25})
+printObjectKeys(null)
+printObjectKeys([1, 2, 3])
+
+
 
 /*
 11. Sum Array Using do-while Loop
