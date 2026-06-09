@@ -25,7 +25,26 @@ in Node.js or in your browser's console to see the output.
 2. Each contact is an object with 'name', 'phone', and 
    'email' properties.
 */
+const generalContacts = [
+  {
+    name: 'Ferhat',
+    phone: '0090512345678',
+    email: 'example@com',
+  },
+  {
+    name: 'Mehmet',
+    phone: '00123345456',
+    email: 'example2@com',
+  },
+];
 
+const workContacts = [
+  {
+    name: 'John',
+    phone: '00011111111111',
+    email: 'work-contact@com',
+  },
+];
 
 /*
 -----------------------------------------------------------
@@ -39,6 +58,34 @@ Example output:
   Name: Alice, Phone: 123-456-7890, Email: alice@example.com
 */
 
+function displayAllContacts(contacts) {
+  console.log('Displaying all contacts...');
+
+  if (contacts.length == 0) {
+    console.log('No contacts in the list.');
+    return;
+  }
+
+  for (let i = 0; i < contacts.length; i++) {
+    // TODO: add check that current contact is an object (Optional: and has required properties -> Object.keys())
+    const currentContact = contacts[i];
+    console.log(
+      `Name: ${currentContact.name}, Phone: ${currentContact.phone}, Email: ${currentContact.email}`,
+    );
+  }
+  console.log('End of contacts.');
+}
+
+displayAllContacts(generalContacts);
+
+displayAllContacts(workContacts);
+
+// TODO: make sure that the function still works when input below is provided
+displayAllContacts([]);
+
+// displayAllContacts();
+// displayAllContacts([{street:"some street", postalCode: '12345'}]);
+// displayAllContacts(['john', '1312312', 'emaail@com']);
 
 /*
 -----------------------------------------------------------
@@ -50,7 +97,32 @@ Function: addContact(name, phone, email)
   exists before adding. If found, logs a warning and returns.
 - Logs "Contact added successfully." if everything is good.
 */
+function findContact(name, contactList) {
+  for (let i = 0; i < contactList.length; i++) {
+    if (contactList[i].name.toLowerCase() === name.toLowerCase()) {
+      return contactList[i];
+    }
+  }
+  console.log('Contact is not found.');
+  return null;
+}
 
+function addContact(name, phone, email, contactList) {
+  console.log('Adding a new contact.');
+
+  const maybeExistingContact = findContact(name, contactList);
+  if (maybeExistingContact) {
+    console.warn('This guy is already here.');
+    return;
+  }
+
+  const newContact = { name, phone, email }; // {name: name, phone: phone, email: email};
+  contactList.push(newContact);
+  console.log('Succesfully added a new contact.');
+}
+
+addContact('Mary', '001236672', 'vanderboom@gmail.com', generalContacts);
+displayAllContacts(generalContacts);
 
 /*
 -----------------------------------------------------------
@@ -62,6 +134,23 @@ Function: viewContact(name)
 - Otherwise, logs: "No contact found with the name: <name>"
 */
 
+function viewContact(name, contactList) {
+  console.log(`Looking for the name: ${name}...`);
+
+  const maybeExistingContact = findContact(name, contactList);
+
+  if (maybeExistingContact) {
+    console.log(
+      `Name: ${maybeExistingContact.name}, Phone: ${maybeExistingContact.phone}, Email: ${maybeExistingContact.email}`,
+    );
+    return;
+  }
+
+  console.log(`No contact found with the name: ${name}`);
+}
+viewContact('Mary', generalContacts);
+viewContact('mary', generalContacts);
+
 /*
 -----------------------------------------------------------
   STEP 5: Update a Contact
@@ -71,7 +160,6 @@ Function: updateContact(name, newPhone, newEmail)
 - Logs "Contact updated successfully." if found.
 - Otherwise, logs: "No contact found with the name: <name>"
 */
-
 
 /*
 -----------------------------------------------------------
