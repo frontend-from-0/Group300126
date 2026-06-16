@@ -27,3 +27,43 @@ const user3 = {
   name: 'Adam',
   email: 'adam@gmail.com'
 }
+
+class User {
+  constructor (username, email) {
+    if (typeof username !== 'string' || username.length < 2) {
+      throw Error('Invalid username provided')
+    }
+    if (typeof email !== 'string' || email.length < 5) {
+      throw Error('Invalid email provided')
+    }
+    this.username = username;
+    this.email = email;
+    this.role = 'user';
+  }
+
+  describe () {
+    console.log(this.username, this.email, this.role);
+  }
+}
+
+class AdminUser extends User {
+  constructor (username, email) {
+    super(username, email);
+    this.role = 'admin';
+  }
+
+
+  describe () {
+    console.log('Describing admin user:', this.role);
+  }
+}
+
+const user4 = new User('jane', 'john@gmail.com');
+const user5 = new User('asds', 'jane@gmail.com');
+const user6 = new AdminUser('asdsa', 'mary@gmail.com');
+
+
+user4.username = ' ';
+user4.describe();
+user5.describe();
+user6.describe()

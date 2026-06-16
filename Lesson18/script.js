@@ -28,6 +28,75 @@ Node.js or a browser console.
 3. Add a `viewCart` method to display all items in the cart.
 */
 
+class ShoppingCart {
+  // Private values
+  #items;
+
+  // Instantiation method - constructor
+  constructor() {
+    this.#items = [];
+  }
+
+  // Methods
+  viewCart() {
+    console.log('------- Viewing the cart -------');
+    if (this.#items.length > 0) {
+      for (const item of this.#items) {
+        console.log(
+          `Current item - name: ${item.name}, price: ${item.price.amout} ${item.price.currency}, quantity ${item.quantity}`,
+        );
+      }
+    } else {
+      console.log(`The cart is empty.`);
+    }
+    console.log('--------------');
+
+  }
+
+  // If you define Item class for creating items, then modify addItem to accept one parameter (object) instead of 3.
+  addItem(name, price, quantity) {
+    for (const item of this.#items) {
+      if (item.name === name) {
+        console.log(
+          `Item ${name} already exists, incrementing quantity by ${quantity}`,
+        );
+        item.quantity += quantity;
+        return;
+      }
+    }
+    console.log(`Adding a new item ${name} to the cart.`);
+    this.#items.push({ name, price, quantity });
+  }
+
+  removeItem(name) {
+    for (let i = 0; i < this.#items.length; i++) {
+      if (this.#items[i].name === name) {
+        console.log(`Found item ${name}, removing from the cart...`)
+        this.#items.splice(i, 1);
+        return;
+      }
+    }
+    console.log(`Item ${name} is not found in the cart`)
+  }
+}
+
+const cart = new ShoppingCart();
+cart.viewCart();
+
+cart.addItem('laptop', { amount: 1000.5, currency: 'EUR' }, 1);
+cart.addItem('phone', { amount: 500, currency: 'EUR' }, 2);
+cart.addItem('laptop', { amount: 1000.5, currency: 'EUR' }, 2);
+cart.viewCart();
+
+cart.items.splice(1, 2);
+
+cart.removeItem('laptop');
+cart.removeItem('apples');
+
+
+
+cart.viewCart();
+
 /*
 -----------------------------------------------------------
   STEP 2: Add Items to the Cart
@@ -71,5 +140,3 @@ Node.js or a browser console.
      code is valid.
 3. Use an object to store discount codes and their values.
 */
-
-
