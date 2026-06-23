@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM introduction</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>DOM (Document Object Model)</h1>
+
+  <h2>Methods for finding elements</h2>
+
+  <ol>
+    <li>getElementById - returns an element by its unique ID attribute.</li>
+    <li>getElementsByClassName - returns a collection of elements that have a specific class name.</li>
+    <li>getElementsByTagName - returns a collection of elements with a specific HTML tag name.</li>
+    <li>querySelector - returns the first element that matches a given CSS selector.</li>
+    <li>querySelectorAll - returns a static NodeList(*) of all elements that match a given CSS selector.</li>
+    <li>getElementsByName - returns a collection of elements with a specific name attribute (typically used with form elements when an element has "name" atrribute).</li>
+    <li>closest - returns the closest ancestor element that matches a given CSS selector. It starts with the element itself and then traverses up the DOM tree.</li>
+    <li>parentNode - returns the parent element of a specified element.</li>
+    <li>children - returns a live HTMLCollection of child elements of a specified element.</li>
+    <li>previousElementSibling - returns the previous sibling element of a specified element.</li>
+  </ol>
+
+  <h2>NodeList</h2>
+
+  <p>A NodeList is a collection of DOM elements returned by certain DOM traversal and query methods in JavaScript. It represents a list of nodes (elements) that are linked together in the order they appear in the DOM tree. A NodeList is not an array, although it may resemble one in some ways. It is a "live" collection, meaning it is automatically updated when the DOM changes.</p>
+
+  <p>Although a NodeList may resemble an array, it does not have all the properties and methods of an array. For example, **you cannot use array methods like push, pop, or forEach directly on a NodeList**.</p>
+
+  <img src="" alt="Document Object Model Representation">
+
+
+  <script src="./script.js"></script>
+  
+</body>
+</html>
