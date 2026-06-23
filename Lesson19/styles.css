@@ -1,0 +1,17 @@
+.hidden {
+  display: none;
+}
+
+
+.headline {
+  font-size: 48px;
+  color: purple;
+}
+
+.text-secondary {
+  color: grey;
+}
+
+.text-large {
+  font-size: 18px;
+}
