@@ -93,6 +93,10 @@ fieldset {
   background-color: #005fa3;
 }
 
+#confirm:disabled {
+  background-color: #ddd;
+}
+
 .hidden {
   display: none;
 }
