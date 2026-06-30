@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Book an Appointment</h1>
+      </header>
+
+      <form class="booking">
+        <section class="calendar">
+          <label for="date">Select a date</label>
+          <input type="date" id="date" />
+          <h2 id="timeslots-heading">Available Time Slots</h2>
+          <fieldset class="timeslots" aria-labelledby="timeslots-heading">
+            <legend class="hidden">Choose a time slot</legend>
+            <button class="slot" type="button" aria-label="Select 09:00 time slot">09:00</button>
+            <button class="slot" type="button" aria-label="Select 10:30 time slot">10:30</button>
+            <button class="slot" type="button" aria-label="Select 13:00 time slot">13:00</button>
+            <button class="slot" type="button" aria-label="Select 14:30 time slot">14:30</button>
+            <button class="slot" type="button" aria-label="Select 16:00 time slot">16:00</button>
+          </fieldset>
+        </section>
+
+        <aside class="summary">
+          <h2>Your Appointment</h2>
+          <p>Date: <span id="selected-date">-</span></p>
+          <p>Time: <span id="selected-time">-</span></p>
+          <button id="confirm">Confirm Booking</button>
+        </aside>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
