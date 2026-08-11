@@ -152,3 +152,8 @@ ul {
   background-color: var(--color-danger-hover);
   border-color: var(--color-danger-hover);
 }
+
+
+.hidden {
+  display: none;
+}
