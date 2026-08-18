@@ -52,6 +52,18 @@ myPromise
     console.log('Printing this message no matter the result!');
   });
 
+// async function someFunction() {
+//   try {
+//     const result = await myPromise();
+//     console.log(result);
+//   } catch (error) {
+//     console.error(error);
+//   } finally {
+//     console.log('Printing this message no matter the result!');
+//   }
+// }
+// someFunction();
+
 console.log('Promise created. Waiting for it to resolve or reject...');
 
 /* Asyc / await syntax for working with Promises */
@@ -76,6 +88,7 @@ let fetchData = async function () {
   const res = await fetch('some url');
   const data = await res.json();
 };
+
 // Arrow function
 fetchData = async () => {
   try {
