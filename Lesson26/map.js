@@ -12,6 +12,11 @@ const wordsExercise1 = [
 	'island',
 	'jungle',
 ];
+const wordsConvertedUpperCase = wordsExercise1.map(
+	(word) => word.toUpperCase()
+);
+console.log(wordsConvertedUpperCase);
+console.log(wordsExercise1);
 
 
 
@@ -84,6 +89,12 @@ const products = [
 		model: 'Charge 4',
 	},
 ];
+
+const productNames = products.map(
+	 (product) => product.name
+)
+
+console.log(productNames);
 
 // Exercise 4:
 // Given an array of words, find the length of each word using .map().

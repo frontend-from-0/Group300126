@@ -2,6 +2,11 @@
 // Given an array of numbers, filter out the even numbers.
 const numbersExercise1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+const oddNums = numbersExercise1.filter((num) => num % 2 === 1);
+console.log(oddNums);
+console.log(numbersExercise1);
+
+
 
 // Exercise 2:
 // Given an array of strings, filter out the strings that contain the letter "a".
@@ -83,6 +88,12 @@ const booksExercise9 = [
 		price: 9.99,
 	},
 ];
+
+const expensiveBooks = booksExercise9.filter(
+	(book) => book.price >= 10
+)
+
+console.log(expensiveBooks);
 
 
 // Exercise 4:
@@ -175,8 +186,18 @@ const sentencesExercise5 = [
 	'The aroma of freshly brewed coffee permeated the air, enticing passersby to indulge in a cup of warmth.',
 	'The butterfly gracefully fluttered its wings, showcasing vibrant colors in a delicate dance.',
 ];
-
-
+const shortSentences = sentencesExercise5.filter(
+	(sentence) => {
+		const wordsArray = sentence.split(' ');
+		return wordsArray.length < 10;
+		// if(wordsArray.length < 10){
+		// 	return true
+		// } else{
+		// 	return false
+		// }
+	}
+)
+console.log(shortSentences);
 // Exercise 6:
 // Given an array of products, filter out the products that are out of stock (where the quantity is 0).
 const productsExercise6 = [
@@ -262,7 +283,7 @@ const wordsExercise8 = [
 ];
 
 // Exercise 9:
-// Given an array of objects representing students, filter out the students who have a grade lower than C.
+// Given an array of objects representing students, filter out the students who have a grade lower than C (A, A++, A--, A+, A-,B, B++, B--, B+, B-, C++, C+, C)
 const studentsExercise9 = [
 	{
 		id: 1,
@@ -325,6 +346,16 @@ const studentsExercise9 = [
 		grade: 'B-',
 	},
 ];
+
+const passingStudents = studentsExercise9.filter(
+	(student) => {
+		const grade = student.grade;
+
+		const passingGrades = ['A', 'A++', 'A--', 'A+', 'A-','B', 'B++', 'B--', 'B+', 'B-', 'C++', 'C+', 'C'];
+		return passingGrades.includes(grade);
+	}
+)
+console.log(passingStudents);
 
 // Exercise 10:
 // Given an array of user objects, filter out the users who have a name starting with the letter "J".

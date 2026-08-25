@@ -10,8 +10,8 @@ Here are some key concepts and techniques of functional programming in JavaScrip
 const add = (a, b) => a + b;
 const multiply = (a, b) => a * b;
 
-const operation = add;
-console.log(operation(2, 3)); // Output: 5
+const operation = multiply;
+console.log(operation(2, 3)); // Output: 6
 ```
 
 2. **Pure Functions**: Pure functions are functions that produce the same output for the same inputs and have no side effects. They do not modify external state and do not rely on mutable data. Pure functions are predictable and easier to reason about, which makes testing and debugging simpler.
@@ -35,7 +35,7 @@ console.log(newArray);      // Output: [1, 2, 3, 4]
 ```
 const numbers = [1, 2, 3, 4, 5];
 
-const doubled = numbers.map((num) => num * 2);
+const doubled = numbers.map((num) => num * 2); // [2,4,6...]
 const evenNumbers = numbers.filter((num) => num % 2 === 0);
 const sum = numbers.reduce((acc, num) => acc + num, 0);
 
@@ -103,6 +103,15 @@ console.log(composedFunction(7)); // Output: 14
 ```
 const add = (a) => (b) => a + b;
 const addFive = add(5);
+const addSeven = add(7);
 
-console.log(addFive(3)); // Output: 8
+console.log(addFive(3), addSeven(1)); // Output: 8
+
+
+const emailSender = (provider) => (email) => sendEmail(provider, email);
+
+const sendWithProviderA = emailSender(A);
+const sendWithProviderB = emailSender(B);
+const emailInEu = sendWithProviderA(email);
+const emailInUs = sendWithProviderB(email);
 ```

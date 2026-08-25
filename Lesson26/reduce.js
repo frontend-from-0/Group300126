@@ -13,6 +13,9 @@
 // Exercise 1:
 // Calculate the sum of all numbers in the given array.
 const numbersEx1 = [1, 2, 3, 4, 5];
+const result = numbersEx1.reduce((acc, val)=> acc + val);
+
+console.log('Ex. 1 result', result);
 
 
 // Exercise 2:
