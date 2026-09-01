@@ -58,7 +58,7 @@ console.log(remainingElements);     // [true, undefined, [Function]]
 If an element is `undefined` (or missing), you can provide a fallback.
 
 ```js
-const [x = 10, y = 20] = [5];
+const [x = 10, y = 20] = [5, undefined];
 // x = 5  (element exists)
 // y = 20 (second element is undefined, so default is used)
 
@@ -83,12 +83,12 @@ const person = {
 };
 
 // Without destructuring
-const name = person.name;
-const age = person.age;
-const job = person.job;
+// const name = person.name;
+// const age = person.age;
+// const job = person.job;
 
 // With destructuring
-const { name, age, job } = person;
+const { age, name, job } = person;
 // name = 'Alice', age = 30, job = 'Engineer'
 ```
 
@@ -151,6 +151,10 @@ const {
   }
 } = personWithContactInfo;
 
+// const {name, contact} = personWithContactInfo;
+// const {email, phone} = contact;
+// const { line1, postcode } = contact.address;
+
 console.log(name);      // 'Dave'
 console.log(email);     // 'dave@example.com'
 console.log(line1);     // 'Kungstagatan 1'
@@ -178,6 +182,16 @@ console.log(otherInfo); // { job: 'Engineer', isStudent: true }
 ```
 
 Like arrays, `...otherInfo` must be **last** in the pattern.
+
+const exampleObject = {
+  name: 'John',
+  street: 'Line 1',
+  city: 'Some city'
+}
+
+<!-- 
+This is not descructuring but a way to update  data using rest operator:
+const updatedExampleObject = {...exampleObject, city:'New value'}; -->
 
 ---
 

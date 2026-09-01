@@ -19,7 +19,7 @@ function functionName(parameter1 = defaultValue1, parameter2 = defaultValue2) {
 ```
 
 ```
-function greet(name = 'Guest') {
+ const greet = (name = 'Guest') => {
   return `Hello, ${name}!`;
 }
 
