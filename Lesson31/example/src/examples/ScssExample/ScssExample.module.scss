@@ -1,0 +1,18 @@
+.card {
+  color: var(--color-primary);
+  text-align: center;
+  background-color: var(--color-lighter);
+  border-radius: 5px;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+
+  /* 
+  .card__text is nested inside .card. In SCSS, the & symbol is used to reference the parent selector. So &__text is equivalent to .card__text in CSS.
+  */
+
+  &__text {
+    color: var(--color-default);
+  }
+}
