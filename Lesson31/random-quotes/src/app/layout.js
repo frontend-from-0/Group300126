@@ -1,10 +1,9 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { SomeContext } from '@/app/context/UserContext';
 import { QuotesContextProvider } from '@/app/context/QuotesContext';
 
 const geistSans = Geist({
-  variable: '--font-geist-sans',
+  variable: '--font-sans',
   subsets: ['latin'],
 });
 
