@@ -30,7 +30,7 @@ export const StyledComponentsExample = () => {
 				tagged template literals. It's like merging styles and components into
 				one, which can be really powerful for component-based designs.
 			</StyledTypography>
-			<Button variant='contained' color='warning'>Click me</Button>
+			<Button variant='outlined' color='primary'>Click me</Button>
 		</StyledDiv>
 	);
 };

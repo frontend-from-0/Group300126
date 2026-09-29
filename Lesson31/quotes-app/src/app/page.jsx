@@ -1,42 +1,69 @@
 'use client';
 
-import { QuoteText } from '@/components/typography/QuoteText';
-import { Subtitle } from '@/components/typography/Subtitle';
-import { Button } from '@/components/Button';
 import { useState, useContext } from 'react';
-import {QuotesContext} from '@/contexts/QuotesContextProvider';
-import {UserContext} from '@/contexts/UserContextProvider';
+import { Button } from '@/components/ui/button';
+import { H1 } from '@/components/ui/typography/H1';
+import { Small } from '@/components/ui/typography/Small';
+import { QuotesContext } from '@/contexts/QuotesContextProvider';
+import { UserContext } from '@/contexts/UserContextProvider';
+import { HeartBreakIcon, HeartIcon } from '@phosphor-icons/react';
 
 export default function Home() {
-  const {quotes, handleLike} = useContext(QuotesContext);
+  const { quotes, handleLike } = useContext(QuotesContext);
   const { user, toggleLike } = useContext(UserContext);
 
   const [index, setIndex] = useState(0);
 
-  function handleClick() {
-    console.log('Current index is', index);
-    console.log('Incrementing index....');
-    setIndex((prevIndex) => (prevIndex += 1));
+  function handleNextClick() {
+    setIndex((prevIndex) =>
+      prevIndex < quotes.length - 1 ? prevIndex + 1 : prevIndex,
+    );
   }
 
-  function handleLikeClick(){
+  function handlePrevClick() {
+    setIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+  }
+
+  function handleLikeClick() {
     handleLike(index, user.userId);
     toggleLike(index);
   }
 
+  const isLikedQuote = () => quotes[index]?.likedBy?.includes(user.userId);
+
   return (
-    <main className='flex flex-col items-center justify-center grow'>
-      <div className='text-center bg-zinc-800 p-10 rounded-md'>
-        <div className='flex justify-end mb-6 gap-3'>
-          <Button title='❤️' onClick={handleLikeClick} />
-          <span>{quotes[index]?.likedBy?.length || 0}</span>
+    <main className='w-full max-w-3xl mx-auto flex items-center justify-center grow py-32 px-16'>
+      <div>
+        <div className='flex justify-end items-center gap-3'>
+          <Button onClick={handleLikeClick} variant='ghost'>
+            {isLikedQuote() ? (
+              <HeartBreakIcon
+                weight='fill'
+                className='size-8 text-muted-foreground'
+              />
+            ) : (
+              <HeartIcon weight='fill' className='size-8 text-destructive' />
+            )}
+          </Button>
+          <Small>{quotes[index]?.likedBy?.length || 0}</Small>
         </div>
-        <div className='pb-6'>
-          <QuoteText className='text-zinc-100'>{quotes[index].quote}</QuoteText>
-          <Subtitle>{quotes[index].author}</Subtitle>
+
+        <H1>{quotes[index].quote}</H1>
+        <div className='flex justify-end my-8'>
+          <Small>- {quotes[index].author}</Small>
         </div>
-        <div className='flex justify-center'>
-          <Button title='Next quote' onClick={handleClick} />
+
+        <div className='flex justify-center gap-4'>
+          <Button onClick={handlePrevClick} disabled={index === 0} size='lg'>
+            Previous quote
+          </Button>
+          <Button
+            onClick={handleNextClick}
+            disabled={index === quotes.length - 1}
+            size='lg'
+          >
+            Next quote
+          </Button>
         </div>
       </div>
     </main>
