@@ -1,11 +1,11 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import { QuotesContextProvider } from '@/contexts/QuotesContextProvider';
-import {UserContextProvider} from '@/contexts/UserContextProvider';
+import { UserContextProvider } from '@/contexts/UserContextProvider';
 import Link from 'next/link';
 import './globals.css';
 
 const geistSans = Geist({
-  variable: '--font-geist-sans',
+  variable: '--font-sans',
   subsets: ['latin'],
 });
 
@@ -26,14 +26,16 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className='min-h-screen flex flex-col'>
-        <nav className='flex justify-center gap-4 p-4 bg-zinc-900'>
-          <Link href="/">Home</Link>
-          <Link href="/user/quotes/liked">Liked Quotes Page</Link>
+        <nav className='flex justify-center gap-4 p-4 border-b border-border'>
+          <Link href='/'>Home</Link>
+          <Link href='/user/quotes/liked'>Liked Quotes Page</Link>
         </nav>
         <QuotesContextProvider>
           <UserContextProvider>{children}</UserContextProvider>
         </QuotesContextProvider>
-        <footer className='text-center'>© Random Quotes App</footer>
+        <footer className='text-center text-muted-foreground py-4'>
+          © Quotes App
+        </footer>
       </body>
     </html>
   );
