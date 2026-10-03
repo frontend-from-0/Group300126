@@ -5,16 +5,18 @@ import { Button } from '@/components/ui/button';
 import { H1 } from '@/components/ui/typography/H1';
 import { Small } from '@/components/ui/typography/Small';
 import { QuotesContext } from '@/app/context/QuotesContext';
-import { HeartBreakIcon, HeartIcon } from "@phosphor-icons/react";
+import { HeartBreakIcon, HeartIcon } from '@phosphor-icons/react';
 import { userId } from '@/lib/auth';
+import { Color, ExampleTypographyComponent } from '@/components/ui/typography/ExampleTypographyComponent';
+
 
 export default function Home() {
   const { quotes, index, handleLike, handleNextClick, handlePrevClick } =
     useContext(QuotesContext);
 
-	const isLikedQuote = () => quotes[index].likedBy.includes(userId);
+  const isLikedQuote = () => quotes[index].likedBy.includes(userId);
 
-	console.log(isLikedQuote());
+  console.log(isLikedQuote());
 
   return (
     <main className='w-full max-w-3xl mx-auto flex items-center justify-center py-32 px-16 sm:items-start'>
@@ -22,7 +24,10 @@ export default function Home() {
         <div className='flex justify-end'>
           <Button onClick={handleLike} variant='ghost'>
             {isLikedQuote() ? (
-              <HeartBreakIcon weight='fill' className='size-8 text-muted-foreground' />
+              <HeartBreakIcon
+                weight='fill'
+                className='size-8 text-muted-foreground'
+              />
             ) : (
               <HeartIcon weight='fill' className='size-8 text-destructive' />
             )}
@@ -45,6 +50,10 @@ export default function Home() {
           >
             Next quote
           </Button>
+
+          <ExampleTypographyComponent title={'Some title'} color={Color.Blue} variant={'default'}>
+            something!
+          </ExampleTypographyComponent>
         </div>
       </div>
     </main>

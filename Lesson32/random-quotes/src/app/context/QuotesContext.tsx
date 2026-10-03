@@ -1,23 +1,37 @@
 'use client';
 
 import { createContext, useState } from 'react';
-import {userId} from '@/lib/auth';
-import {quotes as initialQuotes} from '@/quotes';
+import { userId } from '@/lib/auth';
+import { quotes as initialQuotes, Quote } from '@/quotes';
 
+interface QuotesContextInterface {
+  quotes: Quote[];
+  index: number;
+  handleLike: () => void;
+  handleNextClick: () => void;
+  handlePrevClick: () => void;
+}
 
-const updatedInitialQuotes = initialQuotes.map((quote) => ({
+const updatedInitialQuotes: Quote[] = initialQuotes.map((quote) => ({
   ...quote,
   likedBy: [],
 }));
 
-export const QuotesContext = createContext([]);
+export const QuotesContext = createContext<QuotesContextInterface>({
+  quotes: [],
+  index: 0,
+  handleLike: () => {},
+  handleNextClick: () => {},
+  handlePrevClick: () => {},
+});
 
-export function QuotesContextProvider({children}) {
-  const [index, setIndex] = useState(0);
-  const [quotes, setQuotes] = useState(updatedInitialQuotes);
+export function QuotesContextProvider({ children }) {
+  const [index, setIndex] = useState<number>(0);
+  const [quotes, setQuotes] = useState<Quote[]>(updatedInitialQuotes);
 
   function handleNextClick() {
     if (index < quotes.length - 1) setIndex(index + 1);
+    
   }
 
   function handlePrevClick() {

@@ -1,11 +1,19 @@
-export const quotes = [
+export interface Quote {
+  quote: string;
+  author: string;
+  likedBy?: string[];
+}
+
+
+// export const quotes: Array<Quote>
+export const quotes: Quote[] = [
   {
-    quote: "Be yourself; everyone else is already taken.",
-    author: "Oscar Wilde",
+    quote: 'Be yourself; everyone else is already taken.',
+    author: 'Oscar Wilde',
   },
   {
-    quote: "The secret of getting ahead is getting started.",
-    author: "Mark Twain"
+    quote: 'The secret of getting ahead is getting started.',
+    author: 'Mark Twain',
   },
   // {
   //   quote: "In the middle of difficulty lies opportunity.",
