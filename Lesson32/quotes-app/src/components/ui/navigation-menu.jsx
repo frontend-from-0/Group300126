@@ -5,7 +5,7 @@ import { CaretDownIcon } from "@phosphor-icons/react/ssr"
 
 function NavigationMenu({
   align = "start",
-  className,
+  className = "",
   children,
   ...props
 }) {
@@ -25,7 +25,7 @@ function NavigationMenu({
 }
 
 function NavigationMenuList({
-  className,
+  className = "",
   ...props
 }) {
   return (
@@ -41,7 +41,7 @@ function NavigationMenuList({
 }
 
 function NavigationMenuItem({
-  className,
+  className = "",
   ...props
 }) {
   return (
@@ -120,7 +120,7 @@ function NavigationMenuPositioner({
 }
 
 function NavigationMenuLink({
-  className,
+  className = "",
   ...props
 }) {
   return (

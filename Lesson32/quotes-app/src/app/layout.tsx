@@ -1,8 +1,13 @@
+import type { ReactNode } from 'react';
 import { Inter, Playfair_Display } from 'next/font/google';
 import { QuotesContextProvider } from '@/contexts/QuotesContextProvider';
 import { UserContextProvider } from '@/contexts/UserContextProvider';
 import { TopNavigation } from '@/components/TopNavigation';
 import './globals.css';
+
+interface RootLayoutProps {
+  children: ReactNode;
+}
 
 const inter = Inter({
 	subsets: ['latin'],
@@ -19,7 +24,7 @@ export const metadata = {
 	description: 'Simple application that shows motivational quotes',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html
 			lang='en'

@@ -2,7 +2,7 @@ import * as React from "react"
 import { cn } from "cn"
 
 function Card({
-  className,
+  className = "",
   size = "default",
   ...props
 }) {
@@ -49,7 +49,7 @@ function CardTitle({
 }
 
 function CardDescription({
-  className,
+  className = "",
   ...props
 }) {
   return (
