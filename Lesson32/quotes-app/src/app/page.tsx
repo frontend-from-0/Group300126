@@ -2,18 +2,18 @@
 
 import { QuoteText } from '@/components/typography/QuoteText';
 import { Subtitle } from '@/components/typography/Subtitle';
-import { useState, useContext } from 'react';
-import { QuotesContext } from '@/contexts/QuotesContextProvider';
-import { UserContext } from '@/contexts/UserContextProvider';
+import { useState } from 'react';
+import { useQuotes } from '@/contexts/QuotesContextProvider';
+import { useUser } from '@/contexts/UserContextProvider';
 import { Button } from '@/components/ui/button';
 import { Card, CardDescription } from '@/components/ui/card';
-import {HeartIcon} from '@phosphor-icons/react';
+import { HeartIcon } from '@phosphor-icons/react';
 
 export default function Home() {
-  const { quotes, handleLike } = useContext(QuotesContext);
-  const { user, toggleLike } = useContext(UserContext);
+  const { quotes, handleLike } = useQuotes();
+  const { user, toggleLike } = useUser();
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState<number>(0);
 
   function handleClick() {
     console.log('Current index is', index);
@@ -34,7 +34,7 @@ export default function Home() {
             <Button variant="ghost" onClick={handleLikeClick}>
               <HeartIcon size={32} />
             </Button>
-            <span>{quotes[index]?.likedBy?.length || 0}</span>
+            <span>{quotes[index].likedBy.length || 0}</span>
           </div>
 
           <div className='pb-6'>

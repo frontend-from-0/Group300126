@@ -5,19 +5,19 @@ import { Subtitle } from '@/components/typography/Subtitle';
 import { Button } from '@/components/ui/button';
 import { Card, CardDescription } from '@/components/ui/card';
 import { HeartIcon } from '@phosphor-icons/react';
-import { useContext } from 'react';
-import { QuotesContext } from '@/contexts/QuotesContextProvider';
-import { UserContext } from '@/contexts/UserContextProvider';
+import { useQuotes } from '@/contexts/QuotesContextProvider';
+import { useUser } from '@/contexts/UserContextProvider';
+import type { QuoteId } from '@/types';
 
 export default function LikedQuotes() {
-  const { quotes, handleLike } = useContext(QuotesContext);
+  const { quotes, handleLike } = useQuotes();
   const {
     user: { userId },
     toggleLike,
-  } = useContext(UserContext);
+  } = useUser();
   const likedQuotes = quotes.filter((quote) => quote.likedBy.includes(userId));
 
-  function handleLikeClick(quoteId) {
+  function handleLikeClick(quoteId: QuoteId) {
     toggleLike(quoteId);
     handleLike(quoteId, userId);
   }
@@ -38,7 +38,7 @@ export default function LikedQuotes() {
                   <HeartIcon size={28} weight='fill' />
                 </Button>
                 <span className='text-muted-foreground'>
-                  {quote.likedBy?.length || 0}
+                  {quote.likedBy.length || 0}
                 </span>
               </div>
               <div>

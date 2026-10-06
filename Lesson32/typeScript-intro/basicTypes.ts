@@ -33,6 +33,12 @@ enum Weekday {
   //...
 };
 
+enum Month {
+  January = 'January',
+  February = 'February',
+  // ...
+}
+
 const Weekdays = Object.values(Weekday); // 'Monday', 'Tuesday', 'Wednesday'
 const WeekdayKeys = Object.keys(Weekday); // MO, TUE, WED
 
@@ -50,7 +56,7 @@ function warnUser(): void {
 
 type WarnUserArrowFunction = () => void;
 
-const warnUserArrow: WarnUserArrowFunction = () => {
+const warnUserArrow: WarnUserArrowFunction  = () => {
   console.log("This is a warning message");
 }
 
@@ -77,8 +83,15 @@ type MyObject = {
   postCode: string
 }
 
+interface MyObjectInterface {
+  line1: string;
+  line2?: string; // ? means parameter is optional
+  city: string;
+  postCode: string;
+}
 
-const someObject: MyObject = {
+
+const someObject: MyObjectInterface = {
   line1: 'Some street',
   line2: 'Some other street info',
   city: 'The best city',
