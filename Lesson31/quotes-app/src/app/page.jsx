@@ -38,7 +38,7 @@ export default function Home() {
           </div>
 
           <div className='pb-6'>
-            <QuoteText className='text-accent-foreground'>
+            <QuoteText>
               {quotes[index].quote}
             </QuoteText>
             <Subtitle>{quotes[index].author}</Subtitle>

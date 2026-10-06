@@ -2,18 +2,20 @@
 
 import { QuoteText } from '@/components/typography/QuoteText';
 import { Subtitle } from '@/components/typography/Subtitle';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
+import { Card, CardDescription } from '@/components/ui/card';
+import { HeartIcon } from '@phosphor-icons/react';
 import { useContext } from 'react';
 import { QuotesContext } from '@/contexts/QuotesContextProvider';
 import { UserContext } from '@/contexts/UserContextProvider';
 
 export default function LikedQuotes() {
   const { quotes, handleLike } = useContext(QuotesContext);
-  // My mistake was in destructuring the user object. Instead of accessing the userId I renamed user to userId. After adding {} around userId everything worked as expected.
-  const { user: {userId}, toggleLike } = useContext(UserContext);
+  const {
+    user: { userId },
+    toggleLike,
+  } = useContext(UserContext);
   const likedQuotes = quotes.filter((quote) => quote.likedBy.includes(userId));
-
-  console.log('liked quotes are', likedQuotes);
 
   function handleLikeClick(quoteId) {
     toggleLike(quoteId);
@@ -21,23 +23,33 @@ export default function LikedQuotes() {
   }
 
   return (
-    <main className='flex flex-col items-center justify-center grow py-10'>
-      <h1>LikeQuotes</h1>
-      <section className='flex flex-col items-center justify-center grow gap-4 my-10'>
-      {likedQuotes.map((quote) => (
-        <div className='text-center bg-zinc-800 p-10 rounded-md w-xl' key={quote.id}>
-          <div className='flex justify-end mb-6'>
-            <Button
-              title='💔'
-              onClick={() => handleLikeClick(quote.id)}
-            />
-          </div>
-          <div className='pb-6'>
-            <QuoteText className='text-zinc-100'>{quote.quote}</QuoteText>
-            <Subtitle>{quote.author}</Subtitle>
-          </div>
-        </div>
-      ))}
+    <main className='flex flex-col items-center grow py-10 px-6'>
+      <h1 className='font-heading text-3xl text-foreground mb-8'>Liked Quotes</h1>
+      <section className='flex flex-col items-center gap-5 w-full max-w-xl'>
+        {likedQuotes.map((quote) => (
+          <Card className='w-full p-6' key={quote.id}>
+            <CardDescription>
+              <div className='flex justify-end items-center mb-6 gap-2'>
+                <Button
+                  variant='ghost'
+                  size='icon'
+                  onClick={() => handleLikeClick(quote.id)}
+                >
+                  <HeartIcon size={28} weight='fill' />
+                </Button>
+                <span className='text-muted-foreground'>
+                  {quote.likedBy?.length || 0}
+                </span>
+              </div>
+              <div>
+                <QuoteText className='text-card-foreground'>
+                  {quote.quote}
+                </QuoteText>
+                <Subtitle>{quote.author}</Subtitle>
+              </div>
+            </CardDescription>
+          </Card>
+        ))}
       </section>
     </main>
   );
