@@ -1,10 +1,23 @@
 'use client';
 
+import { QuoteId, User, UserId } from '@/types';
 import { createContext, useState } from 'react';
 
-export const userId = 'user-1234';
+export const userId: UserId = 'user-1234';
 
-export const UserContext = createContext({});
+interface UserContextIterface {
+  user: User;
+  toggleLike: (currentQuoteIndex: QuoteId) => void;
+}
+
+const intialUserContextValue = {
+  user: { userId, likedQuotes: [] },
+  toggleLike: () => console.log(),
+};
+
+export const UserContext = createContext<UserContextIterface>(
+  intialUserContextValue,
+);
 
 export function UserContextProvider({ children }) {
   const [user, setUser] = useState({
@@ -16,8 +29,9 @@ export function UserContextProvider({ children }) {
     setUser((prevUser) => {
       const alreadyLiked = prevUser?.likedQuotes.includes(currentQuoteIndex);
       if (alreadyLiked) {
-
-        const updatedLikedQuotes = prevUser?.likedQuotes.filter(quoteId => quoteId !== currentQuoteIndex);
+        const updatedLikedQuotes = prevUser?.likedQuotes.filter(
+          (quoteId) => quoteId !== currentQuoteIndex,
+        );
         return {
           ...prevUser,
           likedQuotes: [...updatedLikedQuotes],

@@ -46,12 +46,3 @@ const processUserInput: ProcessUserInput = function (input, callback) {
 processUserInput('Input', (response) =>
   console.log('This is input value:', response),
 );
-
-const user = {
-  name: 'John',
-  email: 'john@gmail.com',
-  address: {
-    line: 'some street',
-    postCode: '12345'
-  }
-}

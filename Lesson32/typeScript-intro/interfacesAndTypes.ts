@@ -24,7 +24,7 @@ interface Address {
   zip: string;
 }
 
-type ID = string | number;
+type ID = string | number; // e.g. '801bf4c1-549a-4636-9d1e-308c7472cc30' or 123412412312
 
 type Person = {
   id: ID;
@@ -80,6 +80,9 @@ const myDog: Dog = {name: 'Dog', breed: 'Som breed'}
 // Types can represent union types directly, while interfaces cannot.
 
 type Status = "pending" | "approved" | "rejected";
+
+
+const currentStatus: Status = "approved";
 
 // Primitive Types
 // Types can be used to create aliases for primitive types, while interfaces cannot.

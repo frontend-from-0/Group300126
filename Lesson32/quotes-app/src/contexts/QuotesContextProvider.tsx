@@ -2,15 +2,28 @@
 
 import { createContext, useState } from 'react';
 import { quotes as intialQuotes } from '@/quotes';
+import { QuoteId, Quote, UserId} from '@/types';
 
-const updatedQuotes = intialQuotes.map((q, index) => ({ ...q, likedBy: [], id: index }));
+const updatedQuotes: Quote[] = intialQuotes.map((q, index) => ({
+  ...q,
+  likedBy: [],
+  id: index,
+}));
 
-export const QuotesContext = createContext([]);
+interface QuotesContextInterface {
+  quotes: Quote[];
+  handleLike: (currentQuoteIndex: QuoteId, userId: UserId) => void;
+}
+
+export const QuotesContext = createContext<QuotesContextInterface>({
+  quotes: [],
+  handleLike: () => console.log('Handle like is not assigned.'),
+});
 
 export function QuotesContextProvider({ children }) {
-  const [quotes, setQuotes] = useState([...updatedQuotes]);
+  const [quotes, setQuotes] = useState<Quote[]>([...updatedQuotes]);
 
-  function handleLike(currentQuoteIndex, userId) {
+  function handleLike(currentQuoteIndex: QuoteId, userId: UserId) {
     setQuotes((prevQuotes) =>
       prevQuotes.map((quote, index) => {
         if (index !== currentQuoteIndex) {

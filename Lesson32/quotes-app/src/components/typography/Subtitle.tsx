@@ -1,4 +1,9 @@
-export function Subtitle({ element, children }) {
+interface SubtitleProps {
+  element?: "h2";
+  children: React.ReactNode;
+}
+
+export function Subtitle({ element, children }: SubtitleProps) {
   switch (element) {
     case 'h2':
       return (

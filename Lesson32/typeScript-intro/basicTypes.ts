@@ -21,7 +21,7 @@ person = ['Bob', 25];
 // Enums are a way of giving more friendly names to sets of numeric values.
 enum Color {Red, Green, Blue, Yellow};
 
-let primaryColor: Color = Color.Blue;
+let primaryColor: Color = Color.Yellow;
 primaryColor = Color.Red;
 
 console.log('primaryColor', primaryColor); // 0
@@ -32,6 +32,11 @@ enum Weekday {
   WED = 'Wednesday'
   //...
 };
+
+
+const today: Weekday = Weekday.TUE;
+console.log(today) // Tuesday
+
 
 const Weekdays = Object.values(Weekday); // 'Monday', 'Tuesday', 'Wednesday'
 const WeekdayKeys = Object.keys(Weekday); // MO, TUE, WED
