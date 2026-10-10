@@ -1,3 +1,8 @@
+# Authentication vs Authorisation
+
+
+
+
 # How auth0 works with NextJS?
 
 ## Step 1: The user clicks Login
@@ -9,7 +14,7 @@ Auth0 owns the login process. The rules that define this communication are calle
 
 **OAuth is a protocol that lets one application ask another application to authenticate a user safely.**
 
-After login, Auth0 sends the user back.
+After login, Auth0 sends the user back useing callback url.
 
 Important:
 - Our application never sees the password.
@@ -95,7 +100,7 @@ User
  │
  │ Click Login
  ▼
-Next.js
+Next.js (server side)
  │
  │ Redirect
  ▼
@@ -146,7 +151,7 @@ API validates token
 
 ↓
 
-Returns data
+Returns data or Return error (401 - authentication missing, 403 - authorization denied)
 
 
 ... 

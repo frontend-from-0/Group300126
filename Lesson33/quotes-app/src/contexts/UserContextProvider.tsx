@@ -2,8 +2,10 @@
 
 import { QuoteId, User, UserId } from '@/types';
 import { createContext, useState } from 'react';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
-export const userId: UserId = 'user-1234';
+// Fallback id while logged out; when logged in we use the Auth0 user id (sub)
+export const userId: UserId = 'anonymous';
 
 interface UserContextIterface {
   user: User;
@@ -20,10 +22,12 @@ export const UserContext = createContext<UserContextIterface>(
 );
 
 export function UserContextProvider({ children }) {
+  const { user: auth0User } = useUser();
   const [user, setUser] = useState({
     userId,
     likedQuotes: [],
   });
+  const currentUser = { ...user, userId: auth0User?.sub ?? userId };
 
   function toggleLike(currentQuoteIndex) {
     setUser((prevUser) => {
@@ -48,7 +52,7 @@ export function UserContextProvider({ children }) {
   return (
     <UserContext
       value={{
-        user,
+        user: currentUser,
         toggleLike,
       }}
     >
