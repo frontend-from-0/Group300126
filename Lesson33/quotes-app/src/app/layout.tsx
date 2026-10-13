@@ -1,6 +1,5 @@
 import { Inter, Playfair_Display } from 'next/font/google';
 import { QuotesContextProvider } from '@/contexts/QuotesContextProvider';
-import { UserContextProvider } from '@/contexts/UserContextProvider';
 import { TopNavigation } from '@/components/TopNavigation';
 import './globals.css';
 
@@ -31,7 +30,7 @@ export default function RootLayout({ children }) {
 				</header>
 
 				<QuotesContextProvider>
-					<UserContextProvider>{children}</UserContextProvider>
+					{children}
 				</QuotesContextProvider>
 				<footer className='text-center'>© Random Quotes App</footer>
 			</body>

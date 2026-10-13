@@ -4,15 +4,16 @@ import { QuoteText } from '@/components/typography/QuoteText';
 import { Subtitle } from '@/components/typography/Subtitle';
 import { useState, useContext } from 'react';
 import { QuotesContext } from '@/contexts/QuotesContextProvider';
-import { UserContext } from '@/contexts/UserContextProvider';
 import { Button } from '@/components/ui/button';
 import { Card, CardDescription } from '@/components/ui/card';
-import {HeartIcon} from '@phosphor-icons/react';
+import { HeartIcon } from '@phosphor-icons/react';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import { WarningDialog } from '@/components/WarningDialog';
 
 export default function Home() {
   const { quotes, handleLike } = useContext(QuotesContext);
-  const { user, toggleLike } = useContext(UserContext);
-
+  const { user, isLoading } = useUser();
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [index, setIndex] = useState(0);
 
   function handleClick() {
@@ -22,8 +23,11 @@ export default function Home() {
   }
 
   function handleLikeClick() {
-    handleLike(index, user.userId);
-    toggleLike(index);
+    if (user) {
+      handleLike(index, user.userId);
+    } else {
+      setDialogOpen(true);
+    }
   }
 
   return (
@@ -31,16 +35,14 @@ export default function Home() {
       <Card className='mx-auto w-full max-w-xl p-6'>
         <CardDescription>
           <div className='flex justify-end items-center mb-6 gap-3 '>
-            <Button variant="ghost" onClick={handleLikeClick}>
+            <Button variant='ghost' onClick={handleLikeClick}>
               <HeartIcon size={32} />
             </Button>
             <span>{quotes[index]?.likedBy?.length || 0}</span>
           </div>
 
           <div className='pb-6'>
-            <QuoteText>
-              {quotes[index].quote}
-            </QuoteText>
+            <QuoteText>{quotes[index].quote}</QuoteText>
             <Subtitle>{quotes[index].author}</Subtitle>
           </div>
           <div className='flex justify-center'>
@@ -48,6 +50,17 @@ export default function Home() {
           </div>
         </CardDescription>
       </Card>
+
+      <WarningDialog
+        open={dialogOpen}
+        title='Please log in to like the quote'
+        description={
+          <Button variant='link' nativeButton={false} render={<a href='/auth/login' />}>
+            Log in
+          </Button>
+        }
+        onClose={() => setDialogOpen(false)}
+      />
     </main>
   );
 }

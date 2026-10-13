@@ -7,21 +7,21 @@ import { Card, CardDescription } from '@/components/ui/card';
 import { HeartIcon } from '@phosphor-icons/react';
 import { useContext } from 'react';
 import { QuotesContext } from '@/contexts/QuotesContextProvider';
-import { UserContext } from '@/contexts/UserContextProvider';
 import { QuoteId } from '@/types';
 
 export default function LikedQuotes() {
   const { quotes, handleLike } = useContext(QuotesContext);
-  const {
-    user: { userId },
-    toggleLike,
-  } = useContext(UserContext);
-  const likedQuotes = quotes.filter((quote) => quote.likedBy.includes(userId));
+  // const {
+  //   user: { userId },
+  //   toggleLike,
+  // } = useContext(UserContext);
+  // const likedQuotes = quotes.filter((quote) => quote.likedBy.includes(userId));
 
   function handleLikeClick(quoteId: QuoteId) {
-    toggleLike(quoteId);
-    handleLike(quoteId, userId);
+    // toggleLike(quoteId);
+    // handleLike(quoteId, userId);
   }
+  const likedQuotes = [];
 
   return (
     <main className='flex flex-col items-center grow py-10 px-6'>
