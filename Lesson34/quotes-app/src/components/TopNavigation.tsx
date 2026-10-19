@@ -35,6 +35,12 @@ export async function TopNavigation() {
             <NavigationMenuItem>
               <NavigationMenuLink
                 className={navigationMenuTriggerStyle()}
+                render={<Link href='/quotes/new'>New Quote</Link>}
+              />
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                className={navigationMenuTriggerStyle()}
                 render={<a href='/auth/logout'>Log out</a>}
               />
             </NavigationMenuItem>
