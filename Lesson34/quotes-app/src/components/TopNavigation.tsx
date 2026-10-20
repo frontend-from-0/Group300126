@@ -13,8 +13,6 @@ import Link from 'next/link';
 export async function TopNavigation() {
   const session = await auth0.getSession();
 
-  console.log(session);
-
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -30,6 +28,12 @@ export async function TopNavigation() {
               <NavigationMenuLink
                 className={navigationMenuTriggerStyle()}
                 render={<Link href='/user/quotes/liked'>Liked Quotes</Link>}
+              />
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                className={navigationMenuTriggerStyle()}
+                render={<Link href='/quotes/new'>Add New Quote</Link>}
               />
             </NavigationMenuItem>
             <NavigationMenuItem>
