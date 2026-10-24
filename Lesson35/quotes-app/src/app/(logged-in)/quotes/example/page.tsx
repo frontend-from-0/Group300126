@@ -19,13 +19,24 @@ export default function ExampleReactForm() {
   }
 
 
+  // Validate on every change (controlled input)
+  function validateQuote(inputValue) {
+    console.log('Triggered validate quote', inputValue);
+    setQuote(inputValue);
+    if (inputValue.length < 3) {
+      setQuoteError('The quote should have at least 3 chars.');
+    } else {
+      setQuoteError('');
+    }
+  }
+
   return (
     // Controlled form
     <form className='max-w-3xl mx-auto' onSubmit={handleSubmit}>
       <Field>
         <FieldLabel htmlFor='newQuote'>Quote</FieldLabel>
         {/* Controlled input - we control it's value */}
-        <Input id='newQuote' type='text' autoComplete='off' aria-invalid={!!quoteError} onChange={(e) => setQuote(e.target.value.trim())} value={quote}/>
+        <Input id='newQuote' type='text' autoComplete='off' aria-invalid={!!quoteError} onChange={(e) => validateQuote(e.target.value.trim())} value={quote}/>
         {quoteError ?? <FieldError errors={[quoteError]}>{quoteError}</FieldError>}
 
       </Field>
