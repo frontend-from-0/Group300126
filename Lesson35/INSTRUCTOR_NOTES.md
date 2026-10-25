@@ -3,6 +3,19 @@
 **Cohort:** Group300126 (Web Developer) · **When:** Tue 27 Oct 2026, 18:30–20:30 Stockholm (CET; 20:30 TR)
 **Historical source:** `frontend-from-0/Group021125` Lesson36 `random-quotes` (same topic) — starter `a6a6768`, completed `dbb4618`. Rebuilt on this cohort's own `Lesson34/quotes-app` (Auth0 + Server Action + Zod form from Lesson 34).
 
+## What to walk students through (client-side validation + React Hook Form)
+
+Goal: same Zod rules on the client for fast UX, and still on the server so bad data never lands in the DB.
+
+1. **Server vs client.** Recap Lesson 34: Server Action + `quoteSchema.safeParse` is mandatory. Client validation is optional UX — instant feedback, fewer wasted round-trips — but a user can disable JS or POST anyway. Never trust the browser.
+2. **Pain of hand-rolled client validation** on `/quotes/example`: controlled inputs + `validateQuote` on every `onChange` (set value + error per keystroke). Fine for one field; ugly once every field needs the same dance.
+3. **React Hook Form basics.** `useForm({ mode: 'onChange', resolver: zodResolver(quoteSchema) })`, spread `{...register('quote')}` / `{...register('author')}`, read `formState.errors`. `register` still supplies `name`, so native `FormData` in the Server Action still works.
+4. **One schema, two places.** `quoteSchema` via `zodResolver` on the client and `safeParse` in the Server Action — single source of truth, same messages.
+5. **Wire into `/quotes/new`** without dropping Server Actions / `useActionState`. Keep `action={dispatchAction}`. Show a client error only when there is no server error for that field (`errors?.quote && !state.errors?.quote?.join('')`). `aria-invalid` should combine both.
+6. **Live demos.** Short quote → instant client error. Disable JS / bypass the client → server still catches it and the field error still shows.
+
+Optional stretch: `handleSubmit` so the form does not call the Server Action when client validation fails (see Known gaps).
+
 ## Starter (student branch `prep-lesson-35`)
 - `Lesson35/quotes-app` = copy of `Lesson34/quotes-app` from `main` (Lesson34 completed: `/quotes/new` with `useActionState` + Server Action `handleNewQuote` + Zod `quoteSchema` in `src/types.ts`; `/quotes/example` controlled form).
 - Plumbing pre-installed: `react-hook-form` (^7.85.0) and `@hookform/resolvers` (^5.9.2) added to `package.json` / `package-lock.json`, so no `npm install <pkg>` live — students just run `npm install`.
