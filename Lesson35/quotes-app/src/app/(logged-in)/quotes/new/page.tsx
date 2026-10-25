@@ -5,7 +5,9 @@ import { Field, FieldLabel, FieldError } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { useActionState } from 'react';
 import { handleNewQuote } from './action';
-import { NewQuoteFormState } from '@/types';
+import { NewQuoteFormState, quoteSchema } from '@/types';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {redirect} from 'next/navigation'
 
 const intialFormState = {
@@ -17,6 +19,12 @@ const intialFormState = {
 };
 
 export default function NewQuotePage() {
+  // Client-side validation with React Hook Form, reusing the same Zod schema as the Server Action
+  const {
+    register,
+    formState: { errors },
+  } = useForm({ mode: 'onChange', resolver: zodResolver(quoteSchema) });
+
   const [state, dispatchAction, isPending] = useActionState<
     NewQuoteFormState,
     FormData
@@ -36,10 +44,13 @@ export default function NewQuotePage() {
           id='newQuote'
           type='text'
           autoComplete='off'
-          aria-invalid={!!state.errors?.quote?.join('')}
-          name='quote'
+          aria-invalid={!!errors?.quote || !!state.errors?.quote?.join('')}
           defaultValue={state.data?.quote ?? ''}
+          {...register('quote')}
         />
+        {errors?.quote && !state.errors?.quote?.join('') && (
+          <FieldError errors={[errors.quote]}>{errors.quote.message}</FieldError>
+        )}
         {!!state.errors?.quote?.join('') ? (
           <FieldError errors={[...state.errors?.quote]}>
             {state.errors?.quote?.join(' ')}
@@ -54,10 +65,13 @@ export default function NewQuotePage() {
           id='newAuthor'
           type='text'
           autoComplete='off'
-          aria-invalid={!!state.errors?.author?.join('')}
-          name='author'
+          aria-invalid={!!errors?.author || !!state.errors?.author?.join('')}
           defaultValue={state.data?.author ?? ''}
+          {...register('author')}
         />
+        {errors?.author && !state.errors?.author?.join('') && (
+          <FieldError errors={[errors.author]}>{errors.author.message}</FieldError>
+        )}
         {!!state.errors?.author?.join('') ? (
           <FieldError errors={[...state.errors?.author]}>
             {state.errors?.author?.join(' ')}
