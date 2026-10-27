@@ -23,8 +23,6 @@ export async function handleNewQuote(
     author: formData.get('author') ?? '',
   };
 
-  console.table(rawData);
-
   const result = quoteSchema.safeParse(rawData);
 
   if (!result.success) {
