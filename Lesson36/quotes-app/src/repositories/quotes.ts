@@ -68,12 +68,15 @@ export async function insertQuote(input: {
   createdBy: string;
 }): Promise<Quote> {
   const collection = await quotesCollection();
+  const now = new Date().toISOString();
   const document: QuoteDocument = {
     _id: new ObjectId(),
     quote: input.quote,
     author: input.author,
     likedBy: [],
     createdBy: input.createdBy,
+    createdAt: now,
+    updatedAt: now,
   };
   await collection.insertOne(document);
 

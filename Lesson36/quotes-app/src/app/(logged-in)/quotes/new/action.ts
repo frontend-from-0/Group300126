@@ -1,6 +1,7 @@
 'use server';
 
 import { NewQuoteFormState, quoteSchema } from '@/types';
+import { insertQuote } from '@/repositories/quotes';
 import z from 'zod';
 import { auth0 } from "@/lib/auth0";
 import { redirect } from "next/navigation";
@@ -40,16 +41,12 @@ export async function handleNewQuote(
     };
   }
 
-  // Call DB to store new quote
-  // const now = (new Date()).toISOString();
-  // const newQuote = {
-  //   quote: result.data.quote,
-  //   author: result.data.author,
-  //   createdBy: userId,
-  //   likedBy: [],
-  //   createdAt: now,
-  //   updatedAt: now
-  // };
+  // Store the new quote in the DB (the repository adds _id, likedBy, createdAt, updatedAt)
+  await insertQuote({
+    quote: result.data.quote,
+    author: result.data.author,
+    createdBy: userId,
+  });
 
   return {
     success: true,
