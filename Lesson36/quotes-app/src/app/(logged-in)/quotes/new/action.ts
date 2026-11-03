@@ -2,9 +2,9 @@
 
 import { NewQuoteFormState, quoteSchema } from '@/types';
 import z from 'zod';
-import { auth0 } from "@/lib/auth0";
-import { redirect } from "next/navigation";
-
+import { auth0 } from '@/lib/auth0';
+import { redirect } from 'next/navigation';
+import { insertQuote } from '@/repositories/quotes';
 
 export async function handleNewQuote(
   previousState,
@@ -39,20 +39,25 @@ export async function handleNewQuote(
       errors: { ...errors.fieldErrors },
     };
   }
+  const maybeQuote = await insertQuote({
+    quote: result.data.quote,
+    author: result.data.author,
+    createdBy: userId,
+  });
 
-  // Call DB to store new quote
-  // const now = (new Date()).toISOString();
-  // const newQuote = {
-  //   quote: result.data.quote,
-  //   author: result.data.author,
-  //   createdBy: userId,
-  //   likedBy: [],
-  //   createdAt: now,
-  //   updatedAt: now
-  // };
-
-  return {
-    success: true,
-    message: 'Hello, thank you for submitting this form!',
-  };
+  if (maybeQuote) {
+    return {
+      success: true,
+      message: 'Hello, thank you for submitting this form!',
+    };
+  } else {
+    return {
+      success: false,
+      message: 'An error occured when saving a quote. Try again later.',
+      data: {
+        quote: String(rawData.quote),
+        author: String(rawData.author),
+      },
+    };
+  }
 }

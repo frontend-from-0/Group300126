@@ -6,6 +6,7 @@ import type { QuoteDocument } from '@/lib/db/quote-document';
 
 export const Collections = {
   quotes: 'quotes',
+  users: 'users'
 } as const;
 
 export async function quotesCollection(): Promise<Collection<QuoteDocument>> {
