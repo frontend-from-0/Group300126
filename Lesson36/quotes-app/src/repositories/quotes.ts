@@ -13,6 +13,8 @@ function toQuote(document: QuoteDocument): Quote {
     author: document.author,
     likedBy: document.likedBy ?? [],
     createdBy: document.createdBy,
+    createdAt: document.createdAt,
+    updatedAt: document.updatedAt
   };
 }
 
@@ -35,6 +37,8 @@ export async function seedQuotesIfEmpty(
     return;
   }
 
+  const now = new Date().toISOString();
+
   await collection.insertMany(
     initialQuotes.map((initialQuote) => ({
       _id: new ObjectId(),
@@ -42,6 +46,8 @@ export async function seedQuotesIfEmpty(
       author: initialQuote.author,
       likedBy: [] as string[],
       createdBy: 'seed',
+      createdAt: now,
+      updatedAt: now
     })),
   );
 }
@@ -76,7 +82,7 @@ export async function insertQuote(input: {
     likedBy: [],
     createdBy: input.createdBy,
     createdAt: now,
-    updatedAt: now,
+    updatedAt: now
   };
   await collection.insertOne(document);
 
@@ -101,6 +107,7 @@ export async function updateQuoteLikedBy(
   }
 
   const alreadyLiked = existing.likedBy.includes(userId);
+  // TODO: add updatedAt timestamp
   const updated = await collection.findOneAndUpdate(
     { _id: objectId },
     alreadyLiked

@@ -8,6 +8,6 @@ export interface QuoteDocument {
   author: string;
   likedBy: string[];
   createdBy: string;
-  createdAt?: string;
-  updatedAt?: string;
+  updatedAt: string;
+  createdAt: string;
 }

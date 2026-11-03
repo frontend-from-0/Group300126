@@ -10,10 +10,13 @@ export interface InitialQuote {
   author: string;
 }
 
+// Quote (and other types/interfaces in this file) are application/server layer model
 export interface Quote extends InitialQuote {
   id: QuoteId;
   likedBy: UserId[];
   createdBy?: UserId;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface User {
