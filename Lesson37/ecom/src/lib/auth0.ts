@@ -62,20 +62,16 @@ export async function getSessionUser(): Promise<Auth0SessionUser | null> {
     | undefined;
 
   const user = (session?.user as Auth0SessionUser | undefined) ?? null;
-  console.log('user: ', user);
 
   const userRolesClaim = user?.[ROLES_CLAIM];
-  console.log('userRolesClaim: ', userRolesClaim);
 
   const rolesFromIdToken = tryGetRolesClaimFromIdToken(tokenSet?.idToken);
-  console.log('rolesFromIdToken: ', rolesFromIdToken);
 
   const normalizedUser =
     user && !Array.isArray(userRolesClaim) && rolesFromIdToken.length > 0
       ? ({ ...user, [ROLES_CLAIM]: rolesFromIdToken } as Auth0SessionUser)
       : user;
 
-  console.log('normalizedUser: ', normalizedUser);
   return normalizedUser;
 }
 

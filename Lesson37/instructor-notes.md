@@ -1,0 +1,57 @@
+# Lesson 37 – Instructor notes (Group300126)
+
+**Topic:** NextJS Ecommerce app setup & System Design, Admin auth
+**When:** Tue 17 Nov 2026, 18:30–20:30 (Stockholm, CET)
+**Historical source:** `frontend-from-0/Group021125` Lesson38, taught Thu 27 Aug 2026
+- starter `d9aa6a3` "Lesson38 starter files" (`auth0.ts`, `auth0-action.ts`)
+- completed `5911f49` "Add Lesson 38 completed files" (`Lesson38/ecom`, the app created in class; `auth0.ts` moved to `ecom/src/lib/auth0.ts`, debug `console.log`s removed)
+- System design user flow: `frontend-from-0/Group200825` Lesson38 `user-flow.md` (10 Jun 2026, same lesson in the earlier cohort), shown below
+
+> Student branch `prep-lesson-37` only has `Lesson37/README.md`, `auth0.ts`, `auth0-action.ts`, `.env.example`.
+> This branch adds the finished `Lesson37/ecom` app (what we build in class) and these notes.
+
+## Changes vs the historical code
+
+- **Roles claim namespace aligned.** In Group021125 the Auth0 action used `https://ecom-021125` but `ROLES_CLAIM` in `auth0.ts` was `https://pyp-admin/roles` (left over from an older project), so the admin check only worked if the tenant's action used `pyp-admin`. Here both use `https://ecom-300126` and `ROLES_CLAIM = "https://ecom-300126/roles"`. If you reuse an existing Auth0 action/tenant, change the one constant to match it.
+- Added `ecom/.env.example` (Auth0 vars only, placeholders) and `!.env.example` in `ecom/.gitignore` (create-next-app ignores `.env*`).
+- No secrets were in the historical code.
+
+## Lesson plan (~120 min)
+
+1. **System design (25–30 min)** – whiteboard the shop before writing code. Actors: admin, customer (guest/logged-in). Services: Next.js (UI + API routes/server actions), Auth0 (auth + roles), Stripe (products/prices, checkout, webhooks), image storage (Vercel Blob), MongoDB (products/orders), email (Resend).
+   User flow used with Group200825:
+   1. Admin can access the admin platform to create/manage products
+      1. Save productId and priceId in Stripe (Stripe returns them)
+      2. Save/modify images in Vercel Blob (returns a URL per image)
+      3. Save/update product data (incl. productId, priceId, image URLs) in MongoDB
+      4. Deleting a product: mark it disabled first; only then allow deletion → disable product/price in Stripe, delete images in Blob, delete the DB record
+      5. Admin can update order status (created, paid, processing, in-transit, delivered, cancelled, returned)
+   2. User can access the website and view products
+      1. Add listed products to the cart
+      2. Trigger checkout for the cart
+      3. If checkout succeeds: redirect to success page; Stripe webhook notifies our backend → handle order (2.4), create the user account or attach the order to an existing user
+      4. Handle order: store order in DB, update stock, send email (Resend)
+      5. User receives an order-created email with the products
+      6. New users receive an email with a link to set a password and finish account creation
+      7. User can view/modify their settings
+      8. User can log in and view past orders
+2. **Create the app (20 min)** – `npx create-next-app@latest ecom` (TS, ESLint, Tailwind, `src/`, App Router, React Compiler → `reactCompiler: true` in `next.config.ts`), `npx shadcn@latest init` (style `base-nova`, base color neutral), `npx shadcn@latest add button navigation-menu`.
+3. **Auth0 (30 min)** – `npm i @auth0/nextjs-auth0`; copy `.env.example` → `.env.local`; move `Lesson37/auth0.ts` → `ecom/src/lib/auth0.ts`; add `src/proxy.ts` (Next 16 renamed `middleware.ts` → `proxy.ts`, exported function `proxy`) calling `auth0.middleware(request)`. Login/logout are `/auth/login` and `/auth/logout` (use `<a>`, not `<Link>`, so the browser does a full navigation).
+4. **Roles (20 min)** – Auth0 dashboard: roles `admin`/`user`, assign admin to yourself, create the post-login Action from `auth0-action.ts`, deploy, attach to the Login flow. Log out and in again so the new token carries the claim.
+5. **Route protection (20 min)** – route groups:
+   - `src/app/(require-admin)/admin/layout.tsx` → `await requireAdmin()` (redirects to `/forbidden` if not admin)
+   - `src/app/(require-user)/layout.tsx` → `await requireUser()` (redirects to `/auth/login`)
+   - placeholder pages `/admin`, `/user/orders`, `/user/settings`, `/forbidden`
+   - `components/TopNavigation.tsx` with shadcn `NavigationMenu` (base-ui uses the `render` prop instead of `asChild`)
+   Show `requireUserOr401` / `requireAdminOr403` for API routes (used later for products/orders APIs).
+
+## Gotchas
+
+- Roles missing → check the namespace (most common bug; it happened in Group021125 and Group200825). The helper also decodes the ID token as a fallback; the starter `auth0.ts` keeps the `console.log`s so you can show the session/claims in the terminal. The completed version has them removed.
+- Roles only appear after re-login (tokens are minted at login).
+- `LayoutProps<'/'>` is a global type generated by Next 16 typegen. Run `npm run dev` once if the editor complains.
+- Callback URL must be `http://localhost:3000/auth/callback` (SDK v4).
+
+## Homework idea
+
+Write your own user flow / system design for the shop (actors, services, data stored where) and add an `/admin/products` placeholder page protected by the admin layout.
