@@ -1,10 +1,10 @@
 'use server';
 
 import { NewQuoteFormState, quoteSchema } from '@/types';
+import { insertQuote } from '@/repositories/quotes';
 import z from 'zod';
 import { auth0 } from '@/lib/auth0';
 import { redirect } from 'next/navigation';
-import { insertQuote } from '@/repositories/quotes';
 
 export async function handleNewQuote(
   previousState,

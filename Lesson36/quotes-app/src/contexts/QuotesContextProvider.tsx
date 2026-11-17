@@ -4,10 +4,14 @@ import { createContext, useState } from 'react';
 import { quotes as intialQuotes } from '@/quotes';
 import { QuoteId, Quote, UserId} from '@/types';
 
+const now = new Date().toISOString();
+
 const updatedQuotes: Quote[] = intialQuotes.map((q, index) => ({
   ...q,
   likedBy: [],
   id: index,
+  createdAt: now,
+  updatedAt: now,
 }));
 
 interface QuotesContextInterface {
