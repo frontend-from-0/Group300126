@@ -23,6 +23,7 @@ export const createProductFormSchema = z.object({
     .regex(PRICE_PATTERN, "Enter a valid price (e.g. 19.99)"),
   currency: currencySchema,
   category: productCategorySchema,
+  // I actually decided not to convert the stock to a number here as we want to output data back if form validation fails, then we will need it in the string format for the form to work correctly.
   stock: z
     .string()
     .trim()

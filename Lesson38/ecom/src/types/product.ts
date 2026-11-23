@@ -1,3 +1,5 @@
+import { Currency } from "./currency";
+
 export enum ProductCategory {
   ELECTRONICS = "ELECTRONICS",
   CLOTHING = "CLOTHING",
@@ -54,3 +56,18 @@ export const PRODUCT_SORT_OPTIONS: {
 export function isProductSort(value: string): value is ProductSort {
   return Object.values(ProductSort).includes(value as ProductSort);
 }
+
+
+export type Product = {
+  id: string;
+  name: string;
+  description: string;
+  priceCents: number;
+  currency: Currency;
+  category: ProductCategory;
+  stock: number;
+  imageUrls: readonly string[];
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+};
