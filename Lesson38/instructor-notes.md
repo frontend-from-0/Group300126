@@ -12,7 +12,7 @@
 
 ## Changes vs the historical code
 
-- **Roles claim namespace aligned** to `https://ecom-300126/roles`, matching `Lesson37/auth0-action.ts`. The historical Lesson39 starter/completed (and the Lesson37 ecom Anna pushed to main after class) still use `https://pyp-admin/roles`. If the class Auth0 tenant/action was switched to `pyp-admin`, change the one constant to match it. Otherwise keep `ecom-300126` and make sure the post-login action matches.
+- **Roles claim namespace** is `https://pyp-admin/roles`, matching the completed Lesson37 ecom on main (and the historical Lesson39 code). The Lesson37 starter action file still says `https://ecom-300126`; do not change Lesson38 back. Package name stays `ecom-300126`.
 - Package name `ecom-200825` → `ecom-300126`.
 - Added `ecom/.env.example` (Auth0 + `DATABASE_URL` + `BLOB_READ_WRITE_TOKEN`) and `!.env.example` in `ecom/.gitignore`.
 - Dropped `ecom/src/generated/` (leftover Prisma 6 client with a Mac-only `libquery_engine-darwin.dylib.node` and a hard-coded `/Users/annasvst/...` path). The completed app uses Prisma 8 contract files under `src/prisma/` instead. `src/generated/` is gitignored.
@@ -32,7 +32,7 @@ The Lesson38 starter is **not** a literal copy of last week's `Lesson37/ecom` pl
 
 ## Gotchas
 
-- Roles missing → check the namespace (most common bug; happened in Group021125 and Group200825, and the Lesson37 ecom on main currently has `pyp-admin` again). Re-login after changing the Auth0 action.
+- Roles missing → check the namespace (most common bug; happened in Group021125 and Group200825). This lesson uses `https://pyp-admin/roles`. Re-login after changing the Auth0 action.
 - Atlas IP allowlist: add `0.0.0.0/0` if you need to reach the cluster from class machines (same as the Lesson 36 quotes homework).
 - Prisma 8 is contract-based (`contract emit`, `db update`), not the old `prisma generate` / `schema.prisma` flow. The starter `package.json` still has `"build": "prisma generate && next build"` before Prisma is installed — that is expected; the completed `package.json` switches the scripts once Prisma 8 is in place.
 - npm 9/10 may fail Prisma install with `Cannot read properties of null (reading 'edgesOut')` — retry with `--legacy-peer-deps`.
