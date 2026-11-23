@@ -3,9 +3,10 @@ import { redirect } from "next/navigation";
 
 export const auth0 = new Auth0Client();
 
-// Must match the custom claim set by the Auth0 post-login action (see Lesson37/auth0-action.ts): `${namespace}/roles`.
+// Must match the custom claim set by the Auth0 post-login action: `${namespace}/roles`.
+// This group's working Lesson 37 ecom uses https://pyp-admin/roles.
 // Common mistake: forgetting the "/roles" suffix or using a different namespace than the action.
-const ROLES_CLAIM = "https://ecom-300126/roles";
+const ROLES_CLAIM = "https://pyp-admin/roles";
 
 export enum AppRole {
   USER = 'user',

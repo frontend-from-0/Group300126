@@ -15,6 +15,6 @@ npm install
 npm run dev
 ```
 
-- Auth0: reuse the Lesson 37 application. `ROLES_CLAIM` in `src/lib/auth0.ts` is `https://ecom-300126/roles` and must match the post-login action in `Lesson37/auth0-action.ts`.
+- Auth0: reuse the Lesson 37 application. `ROLES_CLAIM` in `src/lib/auth0.ts` is `https://pyp-admin/roles` and must match the post-login action.
 - `DATABASE_URL`: MongoDB Atlas (replica set) connection string.
 - `BLOB_READ_WRITE_TOKEN`: from the Vercel Blob store.
