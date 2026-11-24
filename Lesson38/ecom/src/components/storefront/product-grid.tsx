@@ -1,15 +1,15 @@
-import { ProductCard } from "@/components/storefront/product-card";
-import { Skeleton } from "@/components/ui/skeleton";
-import { getStorefrontProducts } from "@/lib/products";
-import type { ProductCategory, ProductSort } from "@/types/product";
+import { ProductCard } from '@/components/storefront/product-card';
+import { Skeleton } from '@/components/ui/skeleton';
+import { getStorefrontProducts } from '@/lib/products';
+import type { ProductCategory, ProductSort } from '@/types/product';
 type ProductGridProps = {
-  category: ProductCategory | "all";
+  category: ProductCategory | 'all';
   sort: ProductSort;
 };
 
 export async function ProductGrid({ category, sort }: ProductGridProps) {
   const products = await getStorefrontProducts({
-    category: category === "all" ? "all" : category,
+    category: category === 'all' ? 'all' : category,
     sort,
   });
 
@@ -18,9 +18,9 @@ export async function ProductGrid({ category, sort }: ProductGridProps) {
       <div className="flex min-h-48 flex-col items-center justify-center rounded-xl border border-dashed border-border bg-muted/30 px-6 py-12 text-center">
         <p className="text-sm font-medium text-foreground">No products available yet</p>
         <p className="mt-1 text-sm text-muted-foreground">
-          {category === "all"
-            ? "Check back soon — new items will appear here."
-            : "No products in this category. Try another filter."}
+          {category === 'all'
+            ? 'Check back soon — new items will appear here.'
+            : 'No products in this category. Try another filter.'}
         </p>
       </div>
     );

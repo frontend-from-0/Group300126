@@ -1,10 +1,10 @@
-import { AdminSidebar } from "@/components/layout/admin-sidebar";
-import { requireAdmin } from "@/lib/auth0";
-import type { Metadata } from "next";
+import { AdminSidebar } from '@/components/layout/admin-sidebar';
+import { requireAdmin } from '@/lib/auth0';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Admin",
-  description: "Admin ecommerce platform",
+  title: 'Admin',
+  description: 'Admin ecommerce platform',
 };
 
 export default async function AdminLayout({

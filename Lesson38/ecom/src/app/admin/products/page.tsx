@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { Suspense } from "react";
+import Link from 'next/link';
+import { Suspense } from 'react';
 
-import { AdminProductsTable } from "@/components/admin/admin-products-table";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
+import { AdminProductsTable } from '@/components/admin/admin-products-table';
+import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import {
   Table,
   TableBody,
@@ -11,10 +11,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from '@/components/ui/table';
 
 export const metadata = {
-  title: "Products",
+  title: 'Products',
 };
 
 function ProductsTableSkeleton() {

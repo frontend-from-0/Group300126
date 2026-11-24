@@ -1,16 +1,16 @@
 'use server';
 
-import { parseStorefrontFiltersFromSearchParams } from "@/lib/validation";
-import type { FieldOutputTypes } from "@/prisma/contract";
-import { db } from "@/prisma/db";
-import { Currency } from "@/types/currency";
+import { parseStorefrontFiltersFromSearchParams } from '@/lib/validation';
+import type { FieldOutputTypes } from '@/prisma/contract';
+import { db } from '@/prisma/db';
+import { Currency } from '@/types/currency';
 import {
   Product,
   type ProductCategory,
   type ProductSort,
-} from "@/types/product";
+} from '@/types/product';
 
-type DbProduct = FieldOutputTypes["__unbound__"]["Product"];
+type DbProduct = FieldOutputTypes['__unbound__']['Product'];
 
 export function toAppProduct(product: DbProduct): Product {
   return {
@@ -29,7 +29,7 @@ export function toAppProduct(product: DbProduct): Product {
 }
 
 export type GetStorefrontProductsFilters = {
-  category?: ProductCategory | "all";
+  category?: ProductCategory | 'all';
   sort?: ProductSort;
 };
 
@@ -50,7 +50,7 @@ export async function getProductById(_id: string): Promise<Product | null> {
 
 export async function parseStorefrontFilters(
   searchParams: Record<string, string | string[] | undefined>,
-): Promise<{ categoryValue: ProductCategory | "all"; sortValue: ProductSort }> {
+): Promise<{ categoryValue: ProductCategory | 'all'; sortValue: ProductSort }> {
   const { category, sort } =
     parseStorefrontFiltersFromSearchParams(searchParams);
 
@@ -58,7 +58,7 @@ export async function parseStorefrontFilters(
 }
 
 export async function addProduct(
-  product: Omit<Product, "id" | "createdAt" | "updatedAt">,
+  product: Omit<Product, 'id' | 'createdAt' | 'updatedAt'>,
 ): Promise<Product | null> {
   const now = new Date();
   const createdProduct = await db.orm.products.create({

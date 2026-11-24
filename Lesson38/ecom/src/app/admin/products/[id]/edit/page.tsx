@@ -1,15 +1,15 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { getProductById } from "@/lib/products";
+} from '@/components/ui/card';
+import { getProductById } from '@/lib/products';
 
 type EditProductPageProps = {
   params: Promise<{ id: string }>;

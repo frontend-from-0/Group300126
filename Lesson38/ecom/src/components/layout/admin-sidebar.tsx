@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   LayoutGrid,
   PackagePlus,
   ShoppingBag,
   Users,
-} from "lucide-react";
+} from 'lucide-react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 const adminLinks = [
-  { href: "/admin/products", label: "Products", icon: LayoutGrid },
-  { href: "/admin/products/new", label: "Create product", icon: PackagePlus },
-  { href: "/admin/orders", label: "Orders", icon: ShoppingBag },
-  { href: "/admin/users", label: "Users", icon: Users },
+  { href: '/admin/products', label: 'Products', icon: LayoutGrid },
+  { href: '/admin/products/new', label: 'Create product', icon: PackagePlus },
+  { href: '/admin/orders', label: 'Orders', icon: ShoppingBag },
+  { href: '/admin/users', label: 'Users', icon: Users },
 ] as const;
 
 export function AdminSidebar() {
@@ -31,19 +31,19 @@ export function AdminSidebar() {
           {adminLinks.map(({ href, label, icon: Icon }) => {
             const isActive =
               pathname === href ||
-              (href === "/admin/products" &&
-                pathname.startsWith("/admin/products/") &&
-                !pathname.startsWith("/admin/products/new"));
+              (href === '/admin/products' &&
+                pathname.startsWith('/admin/products/') &&
+                !pathname.startsWith('/admin/products/new'));
 
             return (
               <Link
                 key={href}
                 href={href}
                 className={cn(
-                  "flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors",
+                  'flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors',
                   isActive
-                    ? "bg-primary/10 font-medium text-primary"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                    ? 'bg-primary/10 font-medium text-primary'
+                    : 'text-muted-foreground hover:bg-muted hover:text-foreground',
                 )}
               >
                 <Icon className="size-4" />

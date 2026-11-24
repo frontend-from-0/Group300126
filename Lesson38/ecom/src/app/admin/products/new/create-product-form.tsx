@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import { useActionState, type ReactNode } from "react";
-import Link from "next/link";
+import { useActionState, type ReactNode } from 'react';
+import Link from 'next/link';
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
-import { ACCEPTED_IMAGE_ACCEPT_ATTR, MAX_IMAGE_MB } from "@/lib/product-images";
-import { Currency, EU_CURRENCY_OPTIONS } from "@/types/currency";
-import { PRODUCT_CATEGORY_OPTIONS, ProductCategory } from "@/types/product";
-import { createProduct, CreateProductFieldErrors, CreateProductFormValues, CreateProductState } from "./action";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { cn } from '@/lib/utils';
+import { ACCEPTED_IMAGE_ACCEPT_ATTR, MAX_IMAGE_MB } from '@/lib/product-images';
+import { Currency, EU_CURRENCY_OPTIONS } from '@/types/currency';
+import { PRODUCT_CATEGORY_OPTIONS, ProductCategory } from '@/types/product';
+import { createProduct, CreateProductFieldErrors, CreateProductFormValues, CreateProductState } from './action';
 
 const initialValues: CreateProductFormValues = {
-  name: "",
-  description: "",
-  price: "",
+  name: '',
+  description: '',
+  price: '',
   currency: Currency.EUR,
   category: ProductCategory.OTHER,
-  stock: "0",
+  stock: '0',
   isActive: true,
 };
 
@@ -41,7 +41,7 @@ export function CreateProductForm() {
   const formKey =
     state && !state.success && state.values
       ? `retry-${state.values.name}-${state.values.price}-${state.values.stock}`
-      : "create-product";
+      : 'create-product';
 
   if (state?.success) {
     return (
@@ -51,7 +51,7 @@ export function CreateProductForm() {
           The product was saved to MongoDB and images were uploaded to Vercel Blob.
         </p>
         <p className="mt-4 text-sm">
-          Product ID:{" "}
+          Product ID:{' '}
           <code className="rounded bg-muted px-1.5 py-0.5 text-xs">{state.productId}</code>
         </p>
         <div className="mt-6 flex gap-3">
@@ -94,7 +94,7 @@ export function CreateProductForm() {
           <FormField
             id="name"
             label="Name"
-            error={fieldError(fieldErrors, "name")}
+            error={fieldError(fieldErrors, 'name')}
           >
             <Input
               id="name"
@@ -102,14 +102,14 @@ export function CreateProductForm() {
               defaultValue={values.name}
               placeholder="Running shoes"
               required
-              aria-invalid={Boolean(fieldError(fieldErrors, "name"))}
+              aria-invalid={Boolean(fieldError(fieldErrors, 'name'))}
             />
           </FormField>
 
           <FormField
             id="description"
             label="Description"
-            error={fieldError(fieldErrors, "description")}
+            error={fieldError(fieldErrors, 'description')}
           >
             <Textarea
               id="description"
@@ -117,25 +117,25 @@ export function CreateProductForm() {
               defaultValue={values.description}
               placeholder="Lightweight trainers for everyday runs."
               required
-              aria-invalid={Boolean(fieldError(fieldErrors, "description"))}
+              aria-invalid={Boolean(fieldError(fieldErrors, 'description'))}
             />
           </FormField>
 
           <FormField
             id="category"
             label="Category"
-            error={fieldError(fieldErrors, "category")}
+            error={fieldError(fieldErrors, 'category')}
           >
             <select
               id="category"
               name="category"
               defaultValue={values.category}
               className={cn(
-                "h-9 w-full rounded-lg border border-input bg-input/30 px-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-                fieldError(fieldErrors, "category") && "border-destructive",
+                'h-9 w-full rounded-lg border border-input bg-input/30 px-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50',
+                fieldError(fieldErrors, 'category') && 'border-destructive',
               )}
               required
-              aria-invalid={Boolean(fieldError(fieldErrors, "category"))}
+              aria-invalid={Boolean(fieldError(fieldErrors, 'category'))}
             >
               {PRODUCT_CATEGORY_OPTIONS.map(({ value, label }) => (
                 <option key={value} value={value}>
@@ -159,7 +159,7 @@ export function CreateProductForm() {
           <FormField
             id="price"
             label="Price"
-            error={fieldError(fieldErrors, "price")}
+            error={fieldError(fieldErrors, 'price')}
             className="sm:col-span-1"
           >
             <Input
@@ -170,14 +170,14 @@ export function CreateProductForm() {
               defaultValue={values.price}
               placeholder="19.99"
               required
-              aria-invalid={Boolean(fieldError(fieldErrors, "price"))}
+              aria-invalid={Boolean(fieldError(fieldErrors, 'price'))}
             />
           </FormField>
 
           <FormField
             id="currency"
             label="Currency"
-            error={fieldError(fieldErrors, "currency")}
+            error={fieldError(fieldErrors, 'currency')}
             className="sm:col-span-1"
           >
             <select
@@ -185,11 +185,11 @@ export function CreateProductForm() {
               name="currency"
               defaultValue={values.currency}
               className={cn(
-                "h-9 w-full rounded-lg border border-input bg-input/30 px-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-                fieldError(fieldErrors, "currency") && "border-destructive",
+                'h-9 w-full rounded-lg border border-input bg-input/30 px-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50',
+                fieldError(fieldErrors, 'currency') && 'border-destructive',
               )}
               required
-              aria-invalid={Boolean(fieldError(fieldErrors, "currency"))}
+              aria-invalid={Boolean(fieldError(fieldErrors, 'currency'))}
             >
               {EU_CURRENCY_OPTIONS.map(({ value, label }) => (
                 <option key={value} value={value}>
@@ -202,7 +202,7 @@ export function CreateProductForm() {
           <FormField
             id="stock"
             label="Stock"
-            error={fieldError(fieldErrors, "stock")}
+            error={fieldError(fieldErrors, 'stock')}
             className="sm:col-span-1"
           >
             <Input
@@ -213,7 +213,7 @@ export function CreateProductForm() {
               step={1}
               defaultValue={values.stock}
               required
-              aria-invalid={Boolean(fieldError(fieldErrors, "stock"))}
+              aria-invalid={Boolean(fieldError(fieldErrors, 'stock'))}
             />
           </FormField>
         </div>
@@ -231,7 +231,7 @@ export function CreateProductForm() {
         <FormField
           id="images"
           label="Product images"
-          error={fieldError(fieldErrors, "images")}
+          error={fieldError(fieldErrors, 'images')}
         >
           <Input
             id="images"
@@ -240,7 +240,7 @@ export function CreateProductForm() {
             accept={ACCEPTED_IMAGE_ACCEPT_ATTR}
             multiple
             required
-            aria-invalid={Boolean(fieldError(fieldErrors, "images"))}
+            aria-invalid={Boolean(fieldError(fieldErrors, 'images'))}
           />
         </FormField>
       </section>
@@ -266,7 +266,7 @@ export function CreateProductForm() {
 
       <div className="flex items-center gap-3 border-t border-border pt-6">
         <Button type="submit" disabled={isPending}>
-          {isPending ? "Creating product..." : "Create product"}
+          {isPending ? 'Creating product...' : 'Create product'}
         </Button>
         <Button asChild variant="outline" disabled={isPending}>
           <Link href="/admin/products">Cancel</Link>
@@ -290,7 +290,7 @@ function FormField({
   children: ReactNode;
 }) {
   return (
-    <div className={cn("grid gap-2", className)}>
+    <div className={cn('grid gap-2', className)}>
       <Label htmlFor={id}>{label}</Label>
       {children}
       {error ? (
