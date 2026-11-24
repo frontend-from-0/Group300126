@@ -8,16 +8,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Currency, formatPrice } from "@/types/currency";
-import { formatCategoryLabel, type ProductCategory } from "@/types/product";
+import type { Category, Currency } from "@/prisma/enums";
+import { formatPrice } from "@/types/currency";
+import { formatCategoryLabel } from "@/types/product";
 
 type ProductCardProps = {
   id: string;
   name: string;
   description: string;
   priceCents: number;
-  currency: string;
-  category: ProductCategory;
+  currency: Currency;
+  category: Category;
   imageUrl?: string;
 };
 
@@ -29,10 +30,7 @@ export function ProductCard({
   category,
   imageUrl,
 }: ProductCardProps) {
-  const priceLabel = formatPrice(
-    priceCents,
-    currency as Currency,
-  );
+  const priceLabel = formatPrice(priceCents, currency);
 
   return (
     <Card className="overflow-hidden">

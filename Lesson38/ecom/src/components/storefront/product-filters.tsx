@@ -9,16 +9,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Category } from "@/prisma/enums";
 import {
   isProductSort,
   PRODUCT_CATEGORY_FILTER_OPTIONS,
   PRODUCT_SORT_OPTIONS,
-  type ProductCategory,
   type ProductSort,
 } from "@/types/product";
 
 type ProductFiltersProps = {
-  category: ProductCategory | "all";
+  category: Category | "all";
   sort: ProductSort;
 };
 
@@ -46,7 +46,9 @@ export function ProductFilters({ category, sort }: ProductFiltersProps) {
       <Select
         value={category}
         onValueChange={(value) =>
-          updateFilters({ category: value as ProductCategory | "all" })
+          updateFilters({
+            category: value === "all" || Category.has(value) ? value : "all",
+          })
         }
       >
         <SelectTrigger className="w-full sm:w-52">

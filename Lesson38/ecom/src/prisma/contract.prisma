@@ -1,0 +1,51 @@
+// use prisma-8
+
+model User {
+  id        ObjectId @id @map("_id")
+  email     String   @unique
+  firstName String
+  lastName  String
+  address   Address
+
+  createdAt   DateTime
+  updatedAt   DateTime
+  @@map("users")
+}
+
+type Address {
+  line1      String
+  city       String
+  postalCode String
+  country    String
+}
+
+model Product {
+  id          ObjectId @id @map("_id")
+  name        String
+  description String
+  priceCents  Int
+  currency    Currency
+  category    Category
+  stock       Int
+  imageUrls   String[]
+  isActive    Boolean
+  createdAt   DateTime
+  updatedAt   DateTime
+
+  @@map("products")
+}
+
+
+enum Currency {
+  EUR
+  GBP
+  TRY
+}
+
+enum Category {
+  ELECTRONICS
+  CLOTHING
+  HOME
+  SPORTS
+  OTHER
+}

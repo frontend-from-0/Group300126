@@ -9,16 +9,17 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { ACCEPTED_IMAGE_ACCEPT_ATTR, MAX_IMAGE_MB } from "@/lib/product-images";
-import { Currency, EU_CURRENCY_OPTIONS } from "@/types/currency";
-import { PRODUCT_CATEGORY_OPTIONS, ProductCategory } from "@/types/product";
+import { Category, Currency } from "@/prisma/enums";
+import { EU_CURRENCY_OPTIONS } from "@/types/currency";
+import { PRODUCT_CATEGORY_OPTIONS } from "@/types/product";
 import { createProduct, CreateProductFieldErrors, CreateProductFormValues, CreateProductState } from "./action";
 
 const initialValues: CreateProductFormValues = {
   name: "",
   description: "",
   price: "",
-  currency: Currency.EUR,
-  category: ProductCategory.OTHER,
+  currency: Currency.members.EUR,
+  category: Category.members.OTHER,
   stock: "0",
   isActive: true,
 };

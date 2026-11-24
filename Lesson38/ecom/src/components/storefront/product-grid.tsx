@@ -1,9 +1,10 @@
 import { ProductCard } from "@/components/storefront/product-card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getStorefrontProducts } from "@/lib/products";
-import type { ProductCategory, ProductSort } from "@/types/product";
+import type { Category } from "@/prisma/enums";
+import type { ProductSort } from "@/types/product";
 type ProductGridProps = {
-  category: ProductCategory | "all";
+  category: Category | "all";
   sort: ProductSort;
 };
 
@@ -36,7 +37,7 @@ export async function ProductGrid({ category, sort }: ProductGridProps) {
           description={product.description}
           priceCents={product.priceCents}
           currency={product.currency}
-          category={product.category as ProductCategory}
+          category={product.category}
           imageUrl={product.imageUrls[0]}
         />
       ))}

@@ -43,3 +43,5 @@ next-env.d.ts
 
 # Prisma generated client (run prisma generate / contract emit locally)
 src/generated/
+dist/
+

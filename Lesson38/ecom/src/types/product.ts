@@ -1,37 +1,25 @@
-import { Currency } from './currency';
-
-export enum ProductCategory {
-  ELECTRONICS = "ELECTRONICS",
-  CLOTHING = "CLOTHING",
-  HOME = "HOME",
-  SPORTS = "SPORTS",
-  OTHER = "OTHER",
-}
+import { Category, Currency } from "@/prisma/enums";
 
 export const PRODUCT_CATEGORY_OPTIONS: {
-  value: ProductCategory;
+  value: Category;
   label: string;
 }[] = [
-  { value: ProductCategory.ELECTRONICS, label: "Electronics" },
-  { value: ProductCategory.CLOTHING, label: "Clothing" },
-  { value: ProductCategory.HOME, label: "Home" },
-  { value: ProductCategory.SPORTS, label: "Sports" },
-  { value: ProductCategory.OTHER, label: "Other" },
+  { value: Category.members.ELECTRONICS, label: "Electronics" },
+  { value: Category.members.CLOTHING, label: "Clothing" },
+  { value: Category.members.HOME, label: "Home" },
+  { value: Category.members.SPORTS, label: "Sports" },
+  { value: Category.members.OTHER, label: "Other" },
 ];
 
 export const PRODUCT_CATEGORY_FILTER_OPTIONS: {
-  value: ProductCategory | "all";
+  value: Category | "all";
   label: string;
 }[] = [
   { value: "all", label: "All categories" },
   ...PRODUCT_CATEGORY_OPTIONS,
 ];
 
-export function isProductCategory(value: string): value is ProductCategory {
-  return Object.values(ProductCategory).includes(value as ProductCategory);
-}
-
-export function formatCategoryLabel(category: ProductCategory): string {
+export function formatCategoryLabel(category: Category): string {
   const option = PRODUCT_CATEGORY_OPTIONS.find((item) => item.value === category);
   return option?.label ?? category;
 }
@@ -63,7 +51,7 @@ export type Product = {
   description: string;
   priceCents: number;
   currency: Currency;
-  category: ProductCategory;
+  category: Category;
   stock: number;
   imageUrls: string[];
   isActive: boolean;

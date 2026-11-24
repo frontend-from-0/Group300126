@@ -12,8 +12,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { getAllProducts } from "@/lib/products";
-import { Currency, formatPrice } from "@/types/currency";
-import { formatCategoryLabel, type ProductCategory } from "@/types/product";
+import { formatPrice } from "@/types/currency";
+import { formatCategoryLabel } from "@/types/product";
 
 export async function AdminProductsTable() {
   const products = await getAllProducts();
@@ -64,10 +64,10 @@ export async function AdminProductsTable() {
               </TableCell>
               <TableCell className="font-medium">{product.name}</TableCell>
               <TableCell>
-                {formatCategoryLabel(product.category as ProductCategory)}
+                {formatCategoryLabel(product.category)}
               </TableCell>
               <TableCell>
-                {formatPrice(product.priceCents, product.currency as Currency)}
+                {formatPrice(product.priceCents, product.currency)}
               </TableCell>
               <TableCell>{product.stock}</TableCell>
               <TableCell>

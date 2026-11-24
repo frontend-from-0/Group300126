@@ -6,15 +6,18 @@
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "contract:emit": "prisma contract emit"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^4.22.0",
-    "@vercel/blob": "^2.4.0",
+    "@prisma/orm-mongo": "^8.0.0-rc.25",
+    "@vercel/blob": "^2.9.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.4.2",
     "lucide-react": "^1.17.0",
+    "mongodb": "^7.9.1",
     "next": "16.2.9",
     "radix-ui": "^1.5.0",
     "react": "19.2.4",
@@ -25,6 +28,8 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@prisma/cli-engine": "^0.10.4",
+    "@prisma/client": "^7.10.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -32,6 +37,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "prisma": "^8.0.0-rc.35",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
