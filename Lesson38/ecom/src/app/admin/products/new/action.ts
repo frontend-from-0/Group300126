@@ -1,11 +1,13 @@
 'use server';
 
+import { addProduct } from '@/lib/products';
 import {
   createProductFormSchema,
   createProductImagesSchema,
 } from '@/lib/validation';
 import { Currency } from '@/types/currency';
 import { ProductCategory } from '@/types/product';
+import { put } from '@vercel/blob';
 
 export type CreateProductFormValues = {
   name: string;
@@ -46,7 +48,10 @@ function flattenFieldErrors(
   fieldErrors: Record<string, string[] | undefined>,
 ): CreateProductFieldErrors {
   return Object.fromEntries(
-    Object.entries(fieldErrors).map(([key, messages]) => [key, messages?.[0] ?? '']),
+    Object.entries(fieldErrors).map(([key, messages]) => [
+      key,
+      messages?.[0] ?? '',
+    ]),
   ) as CreateProductFieldErrors;
 }
 
@@ -81,10 +86,44 @@ export async function createProduct(
     };
   }
 
-  // TODO: Implement the logic to save product data to the database and upload images to Vercel Blob
+  const imageUrls = await Promise.all(
+    images.map(async (image) => {
+      const blob =  await put(image.name, image, {
+        access: 'public',
+        addRandomSuffix: true,
+      });
 
-  return {
-    success: false,
-    message: 'createProduct is not implemented yet.',
-  };
+      return blob.url;
+    }),
+  );
+
+  if (!(imageUrls?.length > 0)) {
+    return {
+      success: false,
+      message: 'Failed saving product to database, please try again',
+      values,
+    };
+  }
+
+
+
+  const createdProduct = await addProduct({
+    name: parsed.data.name,
+    description: parsed.data.description,
+    priceCents: parseInt(parsed.data.price),
+    currency: parsed.data.currency,
+    category: parsed.data.category,
+    stock: parseInt(parsed.data.stock),
+    imageUrls: imageUrls,
+    isActive: parsed.data.isActive,
+  });
+
+  if (!createdProduct) {
+    return {
+      success: false,
+      message: 'Failed saving product to database, please try again',
+      values,
+    };
+  }
+  // TODO: Implement the logic to save product data to the database and upload images to Vercel Blob
 }
