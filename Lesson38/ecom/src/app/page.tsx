@@ -1,4 +1,4 @@
-import { ProductCatalog } from "@/components/storefront/product-catalog";
+import { ProductCatalog } from '@/components/storefront/product-catalog';
 
 type HomePageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;

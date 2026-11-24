@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import {
   Select,
@@ -8,17 +8,17 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select';
 import {
   isProductSort,
   PRODUCT_CATEGORY_FILTER_OPTIONS,
   PRODUCT_SORT_OPTIONS,
   type ProductCategory,
   type ProductSort,
-} from "@/types/product";
+} from '@/types/product';
 
 type ProductFiltersProps = {
-  category: ProductCategory | "all";
+  category: ProductCategory | 'all';
   sort: ProductSort;
 };
 
@@ -31,13 +31,13 @@ export function ProductFilters({ category, sort }: ProductFiltersProps) {
     const nextCategory = next.category ?? category;
     const nextSort = next.sort ?? sort;
 
-    if (nextCategory === "all") {
-      params.delete("category");
+    if (nextCategory === 'all') {
+      params.delete('category');
     } else {
-      params.set("category", nextCategory);
+      params.set('category', nextCategory);
     }
 
-    params.set("sort", nextSort);
+    params.set('sort', nextSort);
     router.push(`/?${params.toString()}`);
   }
 
@@ -46,7 +46,7 @@ export function ProductFilters({ category, sort }: ProductFiltersProps) {
       <Select
         value={category}
         onValueChange={(value) =>
-          updateFilters({ category: value as ProductCategory | "all" })
+          updateFilters({ category: value as ProductCategory | 'all' })
         }
       >
         <SelectTrigger className="w-full sm:w-52">

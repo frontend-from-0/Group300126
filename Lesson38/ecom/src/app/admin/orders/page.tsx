@@ -3,10 +3,10 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 
 export const metadata = {
-  title: "Orders",
+  title: 'Orders',
 };
 
 export default function AdminOrdersPage() {

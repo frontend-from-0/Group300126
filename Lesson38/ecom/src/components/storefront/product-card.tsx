@@ -1,15 +1,15 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import { Badge } from "@/components/ui/badge";
+import { Badge } from '@/components/ui/badge';
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Currency, formatPrice } from "@/types/currency";
-import { formatCategoryLabel, type ProductCategory } from "@/types/product";
+} from '@/components/ui/card';
+import { Currency, formatPrice } from '@/types/currency';
+import { formatCategoryLabel, type ProductCategory } from '@/types/product';
 
 type ProductCardProps = {
   id: string;

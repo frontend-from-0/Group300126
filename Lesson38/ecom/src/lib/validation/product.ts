@@ -1,34 +1,34 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-import { currencySchema } from "@/lib/validation/currency";
+import { currencySchema } from '@/lib/validation/currency';
 import {
   ACCEPTED_IMAGE_TYPES_SET,
   MAX_IMAGE_BYTES,
   MAX_IMAGE_MB,
-} from "@/lib/product-images";
-import { ProductCategory } from "@/types/product";
-import { priceStringToCents } from "@/types/currency";
+} from '@/lib/product-images';
+import { ProductCategory } from '@/types/product';
+import { priceStringToCents } from '@/types/currency';
 
 const PRICE_PATTERN = /^\d+(\.\d{1,2})?$/;
 
 export const productCategorySchema = z.enum(ProductCategory);
 
 export const createProductFormSchema = z.object({
-  name: z.string().trim().min(1, "Name is required"),
-  description: z.string().trim().min(1, "Description is required"),
+  name: z.string().trim().min(1, 'Name is required'),
+  description: z.string().trim().min(1, 'Description is required'),
   price: z
     .string()
     .trim()
-    .min(1, "Price is required")
-    .regex(PRICE_PATTERN, "Enter a valid price (e.g. 19.99)"),
+    .min(1, 'Price is required')
+    .regex(PRICE_PATTERN, 'Enter a valid price (e.g. 19.99)'),
   currency: currencySchema,
   category: productCategorySchema,
   stock: z
     .string()
     .trim()
-    .min(1, "Stock is required")
-    .refine((value) => /^\d+$/.test(value), "Stock must be a whole number")
-    .refine((value) => Number(value) >= 0, "Stock cannot be negative"),
+    .min(1, 'Stock is required')
+    .refine((value) => /^\d+$/.test(value), 'Stock must be a whole number')
+    .refine((value) => Number(value) >= 0, 'Stock cannot be negative'),
   isActive: z.boolean(),
 });
 
@@ -55,16 +55,16 @@ export type CreateProductData = z.infer<typeof createProductDataSchema>;
 // and requires at least one image before we upload to Vercel Blob in the server action.
 export const productImageFileSchema = z
   .instanceof(File)
-  .refine((file) => file.size > 0, "Image file is empty")
+  .refine((file) => file.size > 0, 'Image file is empty')
   .refine(
     (file) => file.size <= MAX_IMAGE_BYTES,
     `Each image must be ${MAX_IMAGE_MB} MB or smaller`,
   )
   .refine(
     (file) => ACCEPTED_IMAGE_TYPES_SET.has(file.type),
-    "Only JPEG, PNG, WebP, and GIF images are allowed",
+    'Only JPEG, PNG, WebP, and GIF images are allowed',
   );
 
 export const createProductImagesSchema = z
   .array(productImageFileSchema)
-  .min(1, "At least one product image is required");
+  .min(1, 'At least one product image is required');

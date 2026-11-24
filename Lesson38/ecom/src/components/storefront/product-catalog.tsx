@@ -1,8 +1,8 @@
-import { Suspense } from "react";
+import { Suspense } from 'react';
 
-import { ProductFilters } from "@/components/storefront/product-filters";
-import { ProductGrid, ProductGridSkeleton } from "@/components/storefront/product-grid";
-import { parseStorefrontFilters } from "@/lib/products";
+import { ProductFilters } from '@/components/storefront/product-filters';
+import { ProductGrid, ProductGridSkeleton } from '@/components/storefront/product-grid';
+import { parseStorefrontFilters } from '@/lib/products';
 type ProductCatalogProps = {
   searchParams: Record<string, string | string[] | undefined>;
 };

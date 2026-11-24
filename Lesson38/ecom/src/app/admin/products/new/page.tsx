@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
-import { CreateProductForm } from "./create-product-form";
+import { CreateProductForm } from './create-product-form';
 
 export const metadata: Metadata = {
-  title: "Create product | Admin",
-  description: "Add a new product to the store",
+  title: 'Create product | Admin',
+  description: 'Add a new product to the store',
 };
 
 export default function NewProductPage() {

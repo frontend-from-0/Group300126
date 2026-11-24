@@ -1,21 +1,21 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { requireUser } from "@/lib/auth0";
+} from '@/components/ui/card';
+import { requireUser } from '@/lib/auth0';
 
 export default async function ProfilePage() {
   const user = await requireUser();
 
-  const displayName = user.name ?? user.email ?? "User";
+  const displayName = user.name ?? user.email ?? 'User';
   const initials = displayName
-    .split(" ")
+    .split(' ')
     .map((part) => part[0])
-    .join("")
+    .join('')
     .slice(0, 2)
     .toUpperCase();
 

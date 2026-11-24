@@ -1,6 +1,6 @@
-import { parseStorefrontFiltersFromSearchParams } from "@/lib/validation";
-import { Currency } from "@/types/currency";
-import { type ProductCategory, type ProductSort } from "@/types/product";
+import { parseStorefrontFiltersFromSearchParams } from '@/lib/validation';
+import { Currency } from '@/types/currency';
+import { type ProductCategory, type ProductSort } from '@/types/product';
 
 export type Product = {
   id: string;
@@ -17,7 +17,7 @@ export type Product = {
 };
 
 export type GetStorefrontProductsFilters = {
-  category?: ProductCategory | "all";
+  category?: ProductCategory | 'all';
   sort?: ProductSort;
 };
 
@@ -37,7 +37,7 @@ export async function getProductById(_id: string): Promise<Product | null> {
 
 export function parseStorefrontFilters(
   searchParams: Record<string, string | string[] | undefined>,
-): { categoryValue: ProductCategory | "all"; sortValue: ProductSort } {
+): { categoryValue: ProductCategory | 'all'; sortValue: ProductSort } {
   const { category, sort } =
     parseStorefrontFiltersFromSearchParams(searchParams);
 

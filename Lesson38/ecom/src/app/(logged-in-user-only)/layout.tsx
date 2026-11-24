@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Ecommerce",
-  description: "Ecommerce platform",
+  title: 'Ecommerce',
+  description: 'Ecommerce platform',
 };
 
 export default function RootLayout({

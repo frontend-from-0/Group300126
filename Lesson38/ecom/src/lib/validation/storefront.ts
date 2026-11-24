@@ -1,18 +1,18 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-import { ProductSort } from "@/types/product";
+import { ProductSort } from '@/types/product';
 
-import { productCategorySchema } from "./product";
+import { productCategorySchema } from './product';
 
 export const productSortSchema = z.enum(ProductSort);
 
 export const storefrontCategoryFilterSchema = z.union([
-  z.literal("all"),
+  z.literal('all'),
   productCategorySchema,
 ]);
 
 export const storefrontFiltersSchema = z.object({
-  category: storefrontCategoryFilterSchema.default("all"),
+  category: storefrontCategoryFilterSchema.default('all'),
   sort: productSortSchema.default(ProductSort.NAME_ASC),
 });
 
@@ -29,7 +29,7 @@ export function parseStorefrontFiltersFromSearchParams(
     : searchParams.sort;
 
   const result = storefrontFiltersSchema.safeParse({
-    category: categoryParam ?? "all",
+    category: categoryParam ?? 'all',
     sort: sortParam ?? ProductSort.NAME_ASC,
   });
 
@@ -37,5 +37,5 @@ export function parseStorefrontFiltersFromSearchParams(
     return result.data;
   }
 
-  return { category: "all", sort: ProductSort.NAME_ASC };
+  return { category: 'all', sort: ProductSort.NAME_ASC };
 }
