@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import {
   Select,
@@ -8,17 +8,17 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Category } from "@/prisma/enums";
+} from '@/components/ui/select';
+import { Category } from '@/prisma/enums';
 import {
   isProductSort,
   PRODUCT_CATEGORY_FILTER_OPTIONS,
   PRODUCT_SORT_OPTIONS,
   type ProductSort,
-} from "@/types/product";
+} from '@/types/product';
 
 type ProductFiltersProps = {
-  category: Category | "all";
+  category: Category | 'all';
   sort: ProductSort;
 };
 
@@ -31,13 +31,13 @@ export function ProductFilters({ category, sort }: ProductFiltersProps) {
     const nextCategory = next.category ?? category;
     const nextSort = next.sort ?? sort;
 
-    if (nextCategory === "all") {
-      params.delete("category");
+    if (nextCategory === 'all') {
+      params.delete('category');
     } else {
-      params.set("category", nextCategory);
+      params.set('category', nextCategory);
     }
 
-    params.set("sort", nextSort);
+    params.set('sort', nextSort);
     router.push(`/?${params.toString()}`);
   }
 
@@ -47,7 +47,7 @@ export function ProductFilters({ category, sort }: ProductFiltersProps) {
         value={category}
         onValueChange={(value) =>
           updateFilters({
-            category: value === "all" || Category.has(value) ? value : "all",
+            category: value === 'all' || Category.has(value) ? value : 'all',
           })
         }
       >

@@ -1,12 +1,12 @@
 import { Auth0Client } from '@auth0/nextjs-auth0/server';
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation';
 
 export const auth0 = new Auth0Client();
 
 // Must match the custom claim set by the Auth0 post-login action: `${namespace}/roles`.
 // This group's working Lesson 37 ecom uses https://pyp-admin/roles.
 // Common mistake: forgetting the "/roles" suffix or using a different namespace than the action.
-const ROLES_CLAIM = "https://pyp-admin/roles";
+const ROLES_CLAIM = 'https://pyp-admin/roles';
 
 export enum AppRole {
   USER = 'user',
@@ -23,16 +23,16 @@ export type Auth0SessionUser = Record<string, unknown> & {
 };
 
 function tryGetRolesClaimFromIdToken(token: unknown): string[] {
-  if (typeof token !== "string") return [];
-  const parts = token.split(".");
+  if (typeof token !== 'string') return [];
+  const parts = token.split('.');
 
   if (parts.length < 2) return [];
   try {
     const payload = JSON.parse(
-      Buffer.from(parts[1].replace(/-/g, "+").replace(/_/g, "/"), "base64").toString("utf8"),
+      Buffer.from(parts[1].replace(/-/g, '+').replace(/_/g, '/'), 'base64').toString('utf8'),
     ) as Record<string, unknown>;
     const roles = payload[ROLES_CLAIM];
-    if (Array.isArray(roles)) return roles.filter((v): v is string => typeof v === "string");
+    if (Array.isArray(roles)) return roles.filter((v): v is string => typeof v === 'string');
     return [];
   } catch {
     return [];
@@ -41,7 +41,7 @@ function tryGetRolesClaimFromIdToken(token: unknown): string[] {
 
 export function getRolesFromUser(user: Auth0SessionUser | null | undefined): string[] {
   const value = user?.[ROLES_CLAIM];
-  if (Array.isArray(value)) return value.filter((v): v is string => typeof v === "string");
+  if (Array.isArray(value)) return value.filter((v): v is string => typeof v === 'string');
   return [];
 }
 
@@ -82,13 +82,13 @@ export async function getSessionUser(): Promise<Auth0SessionUser | null> {
 
 export async function requireUser(): Promise<Auth0SessionUser> {
   const user = await getSessionUser();
-  if (!user) redirect("/auth/login");
+  if (!user) redirect('/auth/login');
   return user;
 }
 
 export async function requireAdmin(): Promise<Auth0SessionUser> {
   const user = await requireUser();
-  if (!isAdmin(user)) redirect("/forbidden");
+  if (!isAdmin(user)) redirect('/forbidden');
   return user;
 }
 
@@ -100,7 +100,7 @@ export async function getAdmin(): Promise<Auth0SessionUser | null> {
 
 export async function requireUserOr401(): Promise<Auth0SessionUser | Response> {
   const user = await getSessionUser();
-  if (!user) return Response.json({ error: "Unauthorized" }, { status: 401 });
+  if (!user) return Response.json({ error: 'Unauthorized' }, { status: 401 });
   return user;
 }
 
@@ -108,6 +108,6 @@ export async function requireAdminOr403(): Promise<Auth0SessionUser | Response> 
   const userOrResponse = await requireUserOr401();
   if (userOrResponse instanceof Response) return userOrResponse;
   if (!isAdmin(userOrResponse))
-    return Response.json({ error: "Forbidden" }, { status: 403 });
+    return Response.json({ error: 'Forbidden' }, { status: 403 });
   return userOrResponse;
 }

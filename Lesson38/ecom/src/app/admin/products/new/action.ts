@@ -47,10 +47,7 @@ function flattenFieldErrors(
   fieldErrors: Record<string, string[] | undefined>,
 ): CreateProductFieldErrors {
   return Object.fromEntries(
-    Object.entries(fieldErrors).map(([key, messages]) => [
-      key,
-      messages?.[0] ?? '',
-    ]),
+    Object.entries(fieldErrors).map(([key, messages]) => [key, messages?.[0] ?? '']),
   ) as CreateProductFieldErrors;
 }
 

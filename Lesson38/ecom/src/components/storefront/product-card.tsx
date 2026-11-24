@@ -1,16 +1,16 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import { Badge } from "@/components/ui/badge";
+import { Badge } from '@/components/ui/badge';
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import type { Category, Currency } from "@/prisma/enums";
-import { formatPrice } from "@/types/currency";
-import { formatCategoryLabel } from "@/types/product";
+} from '@/components/ui/card';
+import type { Category, Currency } from '@/prisma/enums';
+import { formatPrice } from '@/types/currency';
+import { formatCategoryLabel } from '@/types/product';
 
 type ProductCardProps = {
   id: string;

@@ -1,6 +1,6 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-import { Currency } from "@/prisma/enums";
+import { Currency } from '@/prisma/enums';
 
 export const currencySchema = z.enum(Currency.values);
 

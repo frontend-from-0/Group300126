@@ -1,9 +1,8 @@
-
-import { parseStorefrontFiltersFromSearchParams } from "@/lib/validation";
+import { parseStorefrontFiltersFromSearchParams } from '@/lib/validation';
 import { FieldOutputTypes } from '@/prisma/contract';
 import { db } from '@/prisma/db';
-import { Category } from "@/prisma/enums";
-import { Product, type ProductSort } from "@/types/product";
+import { Category } from '@/prisma/enums';
+import { Product, type ProductSort } from '@/types/product';
 
 type DbProduct = FieldOutputTypes['__unbound__']['Product'];
 
@@ -24,7 +23,7 @@ export function toAppProduct(product: DbProduct): Product {
 }
 
 export type GetStorefrontProductsFilters = {
-  category?: Category | "all";
+  category?: Category | 'all';
   sort?: ProductSort;
 };
 
@@ -44,7 +43,7 @@ export async function getProductById(_id: string): Promise<Product | null> {
 
 export function parseStorefrontFilters(
   searchParams: Record<string, string | string[] | undefined>,
-): { categoryValue: Category | "all"; sortValue: ProductSort } {
+): { categoryValue: Category | 'all'; sortValue: ProductSort } {
   const { category, sort } =
     parseStorefrontFiltersFromSearchParams(searchParams);
 
@@ -66,9 +65,8 @@ export async function addProduct(
     imageUrls: [],
     isActive: product.isActive,
     createdAt: now,
-    updatedAt: now
-  })
+    updatedAt: now,
+  });
 
   return toAppProduct(createdProduct);
-
 }

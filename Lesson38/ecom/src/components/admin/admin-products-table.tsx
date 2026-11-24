@@ -1,8 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Table,
   TableBody,
@@ -10,10 +10,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { getAllProducts } from "@/lib/products";
-import { formatPrice } from "@/types/currency";
-import { formatCategoryLabel } from "@/types/product";
+} from '@/components/ui/table';
+import { getAllProducts } from '@/lib/products';
+import { formatPrice } from '@/types/currency';
+import { formatCategoryLabel } from '@/types/product';
 
 export async function AdminProductsTable() {
   const products = await getAllProducts();
@@ -71,8 +71,8 @@ export async function AdminProductsTable() {
               </TableCell>
               <TableCell>{product.stock}</TableCell>
               <TableCell>
-                <Badge variant={product.isActive ? "default" : "secondary"}>
-                  {product.isActive ? "Active" : "Inactive"}
+                <Badge variant={product.isActive ? 'default' : 'secondary'}>
+                  {product.isActive ? 'Active' : 'Inactive'}
                 </Badge>
               </TableCell>
               <TableCell className="text-right">
